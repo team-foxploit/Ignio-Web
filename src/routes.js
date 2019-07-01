@@ -1,10 +1,9 @@
 import Index from "views/Index.jsx";
 import Profile from "views/examples/Profile.jsx";
-import Maps from "views/examples/Maps.jsx";
 import Register from "views/examples/Register.jsx";
 import Login from "views/examples/Login.jsx";
-import Tables from "views/examples/Tables.jsx";
-import Icons from "views/examples/Icons.jsx";
+import Details from "views/examples/Details.jsx";
+import Devices from "views/examples/Devices.jsx";
 
 var routes = [
   {
@@ -15,17 +14,17 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/icons",
-    name: "Icons",
+    path: "/devices",
+    name: "Your Devices",
     icon: "ni ni-planet text-blue",
-    component: Icons,
+    component: Devices,
     layout: "/admin"
   },
   {
-    path: "/maps",
-    name: "Maps",
-    icon: "ni ni-pin-3 text-orange",
-    component: Maps,
+    path: "/history",
+    name: "Detailed view",
+    icon: "ni ni-bullet-list-67 text-red",
+    component: Details,
     layout: "/admin"
   },
   {
@@ -33,13 +32,6 @@ var routes = [
     name: "User Profile",
     icon: "ni ni-single-02 text-yellow",
     component: Profile,
-    layout: "/admin"
-  },
-  {
-    path: "/tables",
-    name: "Tables",
-    icon: "ni ni-bullet-list-67 text-red",
-    component: Tables,
     layout: "/admin"
   },
   {
