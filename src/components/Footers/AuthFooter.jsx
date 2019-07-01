@@ -13,13 +13,14 @@ class Login extends React.Component {
             <Row className="align-items-center justify-content-xl-between">
               <Col xl="6">
                 <div className="copyright text-center text-xl-left text-muted">
-                  © 2018{" "}
+                  © 2019{" "}
                   <a
                     className="font-weight-bold ml-1"
-                    href="https://www.creative-tim.com?ref=adr-auth-footer"
+                    href="http://www.foxploit.com"
+                    rel="noopener noreferrer"
                     target="_blank"
                   >
-                    Creative Tim
+                    Foxploit
                   </a>
                 </div>
               </Col>
@@ -27,15 +28,15 @@ class Login extends React.Component {
                 <Nav className="nav-footer justify-content-center justify-content-xl-end">
                   <NavItem>
                     <NavLink
-                      href="https://www.creative-tim.com?ref=adr-auth-footer"
+                      href="http://www.foxploit.com"
                       target="_blank"
                     >
-                      Creative Tim
+                      Foxploit
                     </NavLink>
                   </NavItem>
                   <NavItem>
                     <NavLink
-                      href="https://www.creative-tim.com/presentation?ref=adr-auth-footer"
+                      href="http://www.foxploit.com/about-us"
                       target="_blank"
                     >
                       About Us
@@ -43,7 +44,7 @@ class Login extends React.Component {
                   </NavItem>
                   <NavItem>
                     <NavLink
-                      href="http://blog.creative-tim.com?ref=adr-auth-footer"
+                      href="http://www.foxploit.com/blog"
                       target="_blank"
                     >
                       Blog
@@ -51,10 +52,10 @@ class Login extends React.Component {
                   </NavItem>
                   <NavItem>
                     <NavLink
-                      href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md?ref=adr-auth-footer"
+                      href="https://github.com/team-foxploit"
                       target="_blank"
                     >
-                      MIT License
+                      GitHub
                     </NavLink>
                   </NavItem>
                 </Nav>
