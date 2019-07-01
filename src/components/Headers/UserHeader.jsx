@@ -10,11 +10,7 @@ class UserHeader extends React.Component {
         <div
           className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
           style={{
-            minHeight: "600px",
-            backgroundImage:
-              "url(" + require("assets/img/theme/profile-cover.jpg") + ")",
-            backgroundSize: "cover",
-            backgroundPosition: "center top"
+            minHeight: "600px"
           }}
         >
           {/* Mask */}
@@ -26,7 +22,7 @@ class UserHeader extends React.Component {
                 <h1 className="display-2 text-white">Hello Jesse</h1>
                 <p className="text-white mt-0 mb-5">
                   This is your profile page. You can see the progress you've
-                  made with your work and manage your projects or assigned tasks
+                  achieved with our devices and manage your profile or device details
                 </p>
                 <Button
                   color="info"
