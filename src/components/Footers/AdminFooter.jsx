@@ -7,10 +7,10 @@ import { Container, Row, Col, Nav, NavItem, NavLink } from "reactstrap";
 class Footer extends React.Component {
   render() {
     return (
-      <footer className="footer">
+      <footer className="footer bg-gradient-info">
         <Row className="align-items-center justify-content-xl-between">
           <Col xl="6">
-            <div className="copyright text-center text-xl-left text-muted">
+            <div className="copyright text-center text-xl-left text-white">
               © 2019{" "}
               <a
                 className="font-weight-bold ml-1"

@@ -60,7 +60,7 @@ class Admin extends React.Component {
             brandText={this.getBrandText(this.props.location.pathname)}
           />
           <Switch>{this.getRoutes(routes)}</Switch>
-          <Container fluid>
+          <Container fluid className="bg-gradient-info">
             <AdminFooter />
           </Container>
         </div>
