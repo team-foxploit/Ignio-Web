@@ -7,21 +7,19 @@
     "url": "git+https://github.com/team-foxploit/Ignio-Web.git"
   },
   "keywords": [
-    "react",
-    "reactjs",
-    "argon",
-    "argon-react",
+    "fire",
+    "ignio",
+    "foxploit",
     "dashboard",
-    "dashboard-react",
-    "argon-dashboard",
-    "argon-dashboard-react"
+    "fire-alert",
+    "foxploit-ignio",
+    "fire-alert-system"
   ],
   "author": "Luke",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/team-foxploit/Ignio-Web/issues"
   },
-  "homepage": "/",
   "scripts": {
     "dev": "react-scripts start",
     "start": "serve -s build",
@@ -37,9 +35,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "engines" : { 
-    "node" : "8.11.3", 
-    "npm" : "6.9.0" 
+  "engines": {
+    "node": "8.11.3",
+    "npm": "6.9.0"
   },
   "browserslist": [
     ">0.2%",
@@ -60,15 +58,19 @@
     "react-datetime": "2.16.3",
     "react-dom": "16.8.4",
     "react-google-maps": "9.4.5",
+    "react-redux": "^7.1.0",
     "react-router-dom": "4.3.1",
     "react-scripts": "2.1.8",
     "reactstrap": "7.1.0",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
     "serve": "^11.0.2"
   },
   "devDependencies": {
     "@types/googlemaps": "3.30.18",
     "@types/markerclustererplus": "2.1.33",
     "@types/react": "16.8.7",
+    "redux-devtools-extension": "^2.13.8",
     "typescript": "3.3.3333"
   }
 }
