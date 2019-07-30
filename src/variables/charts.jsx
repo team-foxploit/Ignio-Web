@@ -285,7 +285,7 @@ function parseOptions(parent, options) {
   }
 }
 
-// Example 1 of Chart inside src/views/Index.jsx (Sales value - Card)
+// 1 of Chart inside src/views/Index.jsx (Flamable Gas Emissions - Card)
 let chartExample1 = {
   options: {
     scales: {
@@ -298,7 +298,7 @@ let chartExample1 = {
           ticks: {
             callback: function(value) {
               if (!(value % 10)) {
-                return "$" + value + "k";
+                return value + "%";
               }
             }
           }
@@ -316,7 +316,7 @@ let chartExample1 = {
             content += label;
           }
 
-          content += "$" + yLabel + "k";
+          content += yLabel + "%";
           return content;
         }
       }
@@ -328,7 +328,7 @@ let chartExample1 = {
       datasets: [
         {
           label: "Performance",
-          data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
+          data: [26, 25, 29, 30, 28, 25, 27, 32, 31]
         }
       ]
     };
@@ -339,14 +339,14 @@ let chartExample1 = {
       datasets: [
         {
           label: "Performance",
-          data: [0, 20, 5, 25, 10, 30, 15, 40, 40]
+          data: [0, 20, 18, 25, 20, 27, 25, 31, 29]
         }
       ]
     };
   }
 };
 
-// Example 2 of Chart inside src/views/Index.jsx (Total orders - Card)
+// 2 of Chart inside src/views/Index.jsx (Device Activity - Card)
 let chartExample2 = {
   options: {
     scales: {
@@ -355,8 +355,7 @@ let chartExample2 = {
           ticks: {
             callback: function(value) {
               if (!(value % 10)) {
-                //return '$' + value + 'k'
-                return value;
+                return value + "%";
               }
             }
           }
@@ -372,7 +371,7 @@ let chartExample2 = {
           if (data.datasets.length > 1) {
             content += label;
           }
-          content += yLabel;
+          content += yLabel + "%";
           return content;
         }
       }
@@ -383,7 +382,7 @@ let chartExample2 = {
     datasets: [
       {
         label: "Sales",
-        data: [25, 20, 30, 22, 17, 29]
+        data: [100, 95, 78, 69, 85, 100]
       }
     ]
   }
