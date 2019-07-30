@@ -19,7 +19,7 @@ class Icons extends React.Component {
       <>
         <Header />
         {/* Page content */}
-        <Container className=" mt--7" fluid>
+        <Container className=" mt--7 mb-8" fluid>
           {/* Table */}
           <Row>
             <div className=" col">
