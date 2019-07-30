@@ -73,7 +73,7 @@ class Sidebar extends React.Component {
             to={prop.layout + prop.path}
             tag={NavLinkRRD}
             onClick={this.closeCollapse}
-            activeClassName="active"
+          
           >
             <i className={prop.icon} />
             {prop.name}
@@ -231,14 +231,14 @@ class Sidebar extends React.Component {
             <h6 className="navbar-heading text-muted">Advanced</h6>
             {/* Navigation */}
             <Nav className="mb-md-3" navbar>
-              <NavItem>
-                <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/documentation/overview?ref=adr-admin-sidebar">
+              {/* <NavItem>
+                <NavLink href="/admin/mobile">
                   <i className="ni ni-mobile-button" />
                   Mobile Support
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
-                <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/documentation/colors?ref=adr-admin-sidebar">
+                <NavLink href="/admin/settings">
                   <i className="ni ni-settings" />
                   Settings
                 </NavLink>
