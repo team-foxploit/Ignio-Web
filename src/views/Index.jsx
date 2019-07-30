@@ -145,7 +145,7 @@ class Index extends React.Component {
                 <CardHeader className="border-0">
                   <Row className="align-items-center">
                     <div className="col">
-                      <h3 className="mb-0">Page visits</h3>
+                      <h3 className="mb-0">Sensor Readings</h3>
                     </div>
                     <div className="col text-right">
                       <Button
@@ -162,56 +162,47 @@ class Index extends React.Component {
                 <Table className="align-items-center table-flush" responsive>
                   <thead className="thead-light">
                     <tr>
-                      <th scope="col">Page name</th>
-                      <th scope="col">Visitors</th>
-                      <th scope="col">Unique users</th>
-                      <th scope="col">Bounce rate</th>
+                      <th scope="col">parameter</th>
+                      <th scope="col">Last Synchronization</th>
+                      <th scope="col">Percentage</th>
+                      <th scope="col">variation rate</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">/argon/</th>
-                      <td>4,569</td>
-                      <td>340</td>
+                      <th scope="row">Carbon Monoxide Gas</th>
+                      <td>31 Jul 2019 12:40 PM</td>
+                      <td>3.45%</td>
                       <td>
-                        <i className="fas fa-arrow-up text-success mr-3" />{" "}
-                        46,53%
+                        <i className="fas fa-arrow-up text-danger mr-3" />{" "}
+                        0.17%
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">/argon/index.html</th>
-                      <td>3,985</td>
-                      <td>319</td>
+                      <th scope="row">Temperature</th>
+                      <td>31 Jul 2019 12:40 PM</td>
+                      <td>3.45%</td>
                       <td>
-                        <i className="fas fa-arrow-down text-warning mr-3" />{" "}
-                        46,53%
+                        <i className="fas fa-arrow-up text-warning mr-3" />{" "}
+                        1.23%
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">/argon/charts.html</th>
-                      <td>3,513</td>
-                      <td>294</td>
+                      <th scope="row">LP Gas</th>
+                      <td>31 Jul 2019 12:40 PM</td>
+                      <td>6.85%</td>
                       <td>
-                        <i className="fas fa-arrow-down text-warning mr-3" />{" "}
-                        36,49%
+                        <i className="fas fa-arrow-down text-success mr-3" />{" "}
+                        5.12%
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">/argon/tables.html</th>
-                      <td>2,050</td>
-                      <td>147</td>
+                      <th scope="row">Other</th>
+                      <td>31 Jul 2019 12:40 PM</td>
+                      <td>0.91%</td>
                       <td>
-                        <i className="fas fa-arrow-up text-success mr-3" />{" "}
-                        50,87%
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">/argon/profile.html</th>
-                      <td>1,795</td>
-                      <td>190</td>
-                      <td>
-                        <i className="fas fa-arrow-down text-danger mr-3" />{" "}
-                        46,53%
+                        <i className="fas fa-arrow-up text-primary mr-3" />{" "}
+                        3.18%
                       </td>
                     </tr>
                   </tbody>
