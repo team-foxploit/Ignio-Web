@@ -56,7 +56,7 @@ class AdminNavbar extends React.Component {
                     <i className=" ni ni-circle-08" />
                     <Media className="ml-2 d-none d-lg-block">
                       <span className="mb-0 text-sm font-weight-bold">
-                        Jessica Jones
+                        Peter Parker
                       </span>
                     </Media>
                   </Media>
