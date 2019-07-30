@@ -60,7 +60,7 @@ class Index extends React.Component {
       <>
         <Header />
         {/* Page content */}
-        <Container className="mt--7" fluid>
+        <Container className="mt--7 mb-4" fluid>
           <Row>
             <Col className="mb-5 mb-xl-0" xl="8">
               <Card className="bg-gradient-default shadow">
@@ -70,7 +70,7 @@ class Index extends React.Component {
                       <h6 className="text-uppercase text-light ls-1 mb-1">
                         Overview
                       </h6>
-                      <h2 className="text-white mb-0">Sales value</h2>
+                      <h2 className="text-white mb-0">Flammables</h2>
                     </div>
                     <div className="col">
                       <Nav className="justify-content-end" pills>
@@ -123,7 +123,7 @@ class Index extends React.Component {
                       <h6 className="text-uppercase text-muted ls-1 mb-1">
                         Performance
                       </h6>
-                      <h2 className="mb-0">Total orders</h2>
+                      <h2 className="mb-0">Device Activity</h2>
                     </div>
                   </Row>
                 </CardHeader>
@@ -223,7 +223,7 @@ class Index extends React.Component {
                 <CardHeader className="border-0">
                   <Row className="align-items-center">
                     <div className="col">
-                      <h3 className="mb-0">Social traffic</h3>
+                      <h3 className="mb-0">Alerts</h3>
                     </div>
                     <div className="col text-right">
                       <Button
@@ -240,22 +240,20 @@ class Index extends React.Component {
                 <Table className="align-items-center table-flush" responsive>
                   <thead className="thead-light">
                     <tr>
-                      <th scope="col">Referral</th>
-                      <th scope="col">Visitors</th>
-                      <th scope="col" />
+                      <th scope="col">Incident</th>
+                      <th scope="col">Danger Level</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">Facebook</th>
-                      <td>1,480</td>
+                      <th scope="row">Node test</th>
                       <td>
                         <div className="d-flex align-items-center">
-                          <span className="mr-2">60%</span>
+                          <span className="mr-2">0%</span>
                           <div>
                             <Progress
                               max="100"
-                              value="60"
+                              value="0"
                               barClassName="bg-gradient-danger"
                             />
                           </div>
@@ -263,15 +261,14 @@ class Index extends React.Component {
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">Facebook</th>
-                      <td>5,480</td>
+                      <th scope="row">Minor smoke</th>
                       <td>
                         <div className="d-flex align-items-center">
-                          <span className="mr-2">70%</span>
+                          <span className="mr-2">20%</span>
                           <div>
                             <Progress
                               max="100"
-                              value="70"
+                              value="20"
                               barClassName="bg-gradient-success"
                             />
                           </div>
@@ -279,45 +276,12 @@ class Index extends React.Component {
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">Google</th>
-                      <td>4,807</td>
+                      <th scope="row">Major smoke</th>
                       <td>
                         <div className="d-flex align-items-center">
-                          <span className="mr-2">80%</span>
+                          <span className="mr-2">50%</span>
                           <div>
-                            <Progress max="100" value="80" />
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Instagram</th>
-                      <td>3,678</td>
-                      <td>
-                        <div className="d-flex align-items-center">
-                          <span className="mr-2">75%</span>
-                          <div>
-                            <Progress
-                              max="100"
-                              value="75"
-                              barClassName="bg-gradient-info"
-                            />
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">twitter</th>
-                      <td>2,645</td>
-                      <td>
-                        <div className="d-flex align-items-center">
-                          <span className="mr-2">30%</span>
-                          <div>
-                            <Progress
-                              max="100"
-                              value="30"
-                              barClassName="bg-gradient-warning"
-                            />
+                            <Progress max="100" value="50" />
                           </div>
                         </div>
                       </td>
