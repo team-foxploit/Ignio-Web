@@ -37,7 +37,7 @@ class Icons extends React.Component {
                         >
                           <div>
                             <i className=" ni ni-box-2" />
-                            <span>active-40</span>
+                            <span>INDB1S1</span>
                           </div>
                         </button>
                       <UncontrolledTooltip
@@ -59,7 +59,7 @@ class Icons extends React.Component {
                         >
                           <div>
                             <i className=" ni ni-box-2" />
-                            <span>air-baloon</span>
+                            <span>INDB1S2</span>
                           </div>
                         </button>
                       <UncontrolledTooltip
@@ -81,7 +81,7 @@ class Icons extends React.Component {
                         >
                           <div>
                             <i className=" ni ni-box-2" />
-                            <span>album-2</span>
+                            <span>INDB1S3</span>
                           </div>
                         </button>
                       <UncontrolledTooltip
@@ -103,7 +103,7 @@ class Icons extends React.Component {
                         >
                           <div>
                             <i className=" ni ni-box-2" />
-                            <span>align-center</span>
+                            <span>INDB1S4</span>
                           </div>
                         </button>
                       <UncontrolledTooltip
