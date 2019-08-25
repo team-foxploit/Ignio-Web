@@ -48,9 +48,9 @@ class Header extends React.Component {
                       <Row>
                         <div className="col">
                           <CardText tag="h5" className="text-uppercase text-info">
-                            <Button color="primary" type="button">
-                              <span>Devices</span>
+                            <Button color="primary" type="button" className="px-2">
                               <Badge className="badge-white">4</Badge>
+                              <span>Devices</span>
                             </Button>
                           </CardText>
                         </div>
@@ -94,7 +94,7 @@ class Header extends React.Component {
                         <span className="text-warning mr-2">
                           <i className="fas fa-arrow-down" /> 1.10%
                         </span>{" "}
-                        <span className="text-nowrap">Last on February 2019</span>
+                        <span className="text-nowrap">Last: February 2019</span>
                       </p>
                     </CardBody>
                   </Card>

@@ -11,7 +11,7 @@ import {
   Container,
   Row,
   Col,
-  TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText
+  TabContent, TabPane, Nav, NavItem, NavLink, Card, Button
 } from "reactstrap";
 
 // core components
