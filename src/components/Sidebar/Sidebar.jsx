@@ -66,14 +66,14 @@ class Sidebar extends React.Component {
     return routes.map((prop, key) => {
       if (prop.layout == "/auth") {
         return null;
-      }      
+      }
       return (
         <NavItem key={key}>
           <NavLink
             to={prop.layout + prop.path}
             tag={NavLinkRRD}
             onClick={this.closeCollapse}
-          
+
           >
             <i className={prop.icon} />
             {prop.name}
@@ -189,10 +189,10 @@ class Sidebar extends React.Component {
                         <img alt={logo.imgAlt} src={logo.imgSrc} />
                       </Link>
                     ) : (
-                      <a href={logo.outterLink}>
-                        <img alt={logo.imgAlt} src={logo.imgSrc} />
-                      </a>
-                    )}
+                        <a href={logo.outterLink}>
+                          <img alt={logo.imgAlt} src={logo.imgSrc} />
+                        </a>
+                      )}
                   </Col>
                 ) : null}
                 <Col className="collapse-close" xs="6">
@@ -228,22 +228,22 @@ class Sidebar extends React.Component {
             {/* Divider */}
             <hr className="my-3" />
             {/* Heading */}
-            <h6 className="navbar-heading text-muted">Advanced</h6>
+            {/* <h6 className="navbar-heading text-muted">Advanced</h6> */}
             {/* Navigation */}
-            <Nav className="mb-md-3" navbar>
-              {/* <NavItem>
+            {/* <Nav className="mb-md-3" navbar> */}
+            {/* <NavItem>
                 <NavLink href="/admin/mobile">
                   <i className="ni ni-mobile-button" />
                   Mobile Support
                 </NavLink>
               </NavItem> */}
-              <NavItem>
+            {/* <NavItem>
                 <NavLink href="/admin/settings">
                   <i className="ni ni-settings" />
                   Settings
                 </NavLink>
               </NavItem>
-            </Nav>
+            </Nav> */}
           </Collapse>
         </Container>
       </Navbar>
