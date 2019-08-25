@@ -4,6 +4,7 @@ import Register from "views/auth/Register.jsx";
 import Login from "views/auth/Login.jsx";
 import Details from "views/admin/Details.jsx";
 import Devices from "views/admin/Devices.jsx";
+import Settings from "views/admin/Settings.jsx";
 
 var routes = [
   {
@@ -47,6 +48,13 @@ var routes = [
     icon: "ni ni-circle-08 text-pink",
     component: Register,
     layout: "/auth"
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    icon: "ni ni-settings",
+    component: Settings,
+    layout: "/admin"
   }
 ];
 export default routes;
