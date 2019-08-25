@@ -61,7 +61,7 @@ class Settings extends React.Component {
                             onClick={() => { this.toggle('1'); }}
                           >
                             Account
-                      </NavLink>
+                          </NavLink>
                         </NavItem>
                         <NavItem>
                           <NavLink
@@ -69,7 +69,7 @@ class Settings extends React.Component {
                             onClick={() => { this.toggle('2'); }}
                           >
                             Billing
-                      </NavLink>
+                          </NavLink>
                         </NavItem>
                         <NavItem>
                           <NavLink
@@ -77,16 +77,17 @@ class Settings extends React.Component {
                             onClick={() => { this.toggle('3'); }}
                           >
                             Emergency
-                      </NavLink>
+                          </NavLink>
                         </NavItem>
                       </Nav>
                       <TabContent activeTab={this.state.activeTab}>
                         <TabPane tabId="1">
                           <Row>
-                            <Col sm="12">
+                            <Col sm="12" className="mt-2">
+                              {/* User Information */}
                               <h6 className="heading-small text-muted mb-4">
                                 User information
-                            </h6>
+                              </h6>
                               <div className="pl-lg-4">
                                 <Row>
                                   <Col lg="6">
@@ -96,7 +97,7 @@ class Settings extends React.Component {
                                         htmlFor="input-username"
                                       >
                                         Username
-                                    </label>
+                                      </label>
                                       <Input
                                         className="form-control-alternative"
                                         defaultValue="parker.pete"
@@ -113,7 +114,7 @@ class Settings extends React.Component {
                                         htmlFor="input-email"
                                       >
                                         Email address
-                                    </label>
+                                      </label>
                                       <Input
                                         className="form-control-alternative"
                                         id="input-email"
@@ -170,7 +171,7 @@ class Settings extends React.Component {
                                       size="sm"
                                     >
                                       Update
-                                  </Button>
+                                    </Button>
                                   </Col>
                                 </Row>
                               </div>
@@ -179,251 +180,245 @@ class Settings extends React.Component {
                         </TabPane>
                         <TabPane tabId="2">
                           <Row>
-                            {/* Address */}
-                            <h6 className="heading-small text-muted mb-4">
-                              Billing information
-                            </h6>
-                            <div className="pl-lg-4">
-                              <Row>
-                                <Col lg="6">
-                                  <FormGroup>
-                                    <label
-                                      htmlFor="input-credit-card-number"
-                                      className="form-control-label"
-                                    >
-                                      Credit Card Number
-                                    </label>
-                                    <Input
-                                      type="text"
-                                      className="form-control-alternative"
-                                      defaultValue="4532187519556819"
-                                      id="input-credit-card-number"
-                                      placeholder="Your Credit Card Number"
-                                    />
-                                  </FormGroup>
-                                </Col>
-                                <Col lg="2">
-                                  <FormGroup>
-                                    <label htmlFor="input-credit-card-type">
-                                      Credit Card Type
-                            </label>
-                                    <Input
-                                      type="text"
-                                      className="form-control-alternative"
-                                      defaultValue="Visa"
-                                      id="input-credit-card-type"
-                                      placeholder="Credit Card Type"
-                                    />
-                                  </FormGroup>
-                                </Col>
-                                <Col lg="2">
-                                  <FormGroup>
-                                    <label htmlFor="input-credit-card-cvv">
-                                      CVV2
-                            </label>
-                                    <Input
-                                      type="text"
-                                      className="form-control-alternative"
-                                      defaultValue="092"
-                                      id="input-credit-card-cvv"
-                                      placeholder="CVV"
-                                    />
-                                  </FormGroup>
-                                </Col>
-                                <Col lg="2">
-                                  <FormGroup>
-                                    <label htmlFor="input-credit-card-expire-date">
-                                      Expires
-                            </label>
-                                    <Input
-                                      type="text"
-                                      className="form-control-alternative"
-                                      defaultValue="02/21"
-                                      id="input-credit-card-expire-date"
-                                      placeholder="MM/YY"
-                                    />
-                                  </FormGroup>
-                                </Col>
-                                <Col md="12">
-                                  <FormGroup>
-                                    <label
-                                      className="form-control-label"
-                                      htmlFor="input-address"
-                                    >
-                                      Billing Address
-                                  </label>
-                                    <Input
-                                      className="form-control-alternative"
-                                      defaultValue='"Valley of Death", Serpentine Road, Colombo 08'
-                                      id="input-address"
-                                      placeholder="Home Address"
-                                      type="text"
-                                    />
-                                  </FormGroup>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col lg="4">
-                                  <FormGroup>
-                                    <label
-                                      className="form-control-label"
-                                      htmlFor="input-city"
-                                    >
-                                      City
-                            </label>
-                                    <Input
-                                      className="form-control-alternative"
-                                      defaultValue="Colombo"
-                                      id="input-city"
-                                      placeholder="City"
-                                      type="text"
-                                    />
-                                  </FormGroup>
-                                </Col>
-                                <Col lg="4">
-                                  <FormGroup>
-                                    <label
-                                      className="form-control-label"
-                                      htmlFor="input-country"
-                                    >
-                                      Country
-                            </label>
-                                    <Input
-                                      className="form-control-alternative"
-                                      defaultValue="Sri Lanka"
-                                      id="input-country"
-                                      placeholder="Country"
-                                      type="text"
-                                    />
-                                  </FormGroup>
-                                </Col>
-                                <Col lg="4">
-                                  <FormGroup>
-                                    <label
-                                      className="form-control-label"
-                                      htmlFor="input-country"
-                                    >
-                                      Postal code
-                            </label>
-                                    <Input
-                                      className="form-control-alternative"
-                                      id="input-postal-code"
-                                      defaultValue="11200"
-                                      placeholder="Postal code"
-                                      type="number"
-                                    />
-                                  </FormGroup>
-                                </Col>
-                              </Row>
-                            </div>
-
-                            <hr className="my-4" />
-
-
-                            {/* Address */}
-                            <div className="pl-lg-4">
+                            <Col sm="12" className="mt-2">
+                              {/* Billing Information */}
                               <h6 className="heading-small text-muted mb-4">
-                                Contact information
-                          </h6>
-                              <Row>
-                                <Col md="12">
-                                  <FormGroup>
-                                    <label
-                                      className="form-control-label"
-                                      htmlFor="input-address"
-                                    >
-                                      Billing Address
-                            </label>
-                                    <Input
-                                      className="form-control-alternative"
-                                      defaultValue='"Valley of Death", Serpentine Road, Colombo 08'
-                                      id="input-address"
-                                      placeholder="Home Address"
-                                      type="text"
-                                    />
-                                  </FormGroup>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col lg="4">
-                                  <FormGroup>
-                                    <label
-                                      className="form-control-label"
-                                      htmlFor="input-city"
-                                    >
-                                      City
-                                    </label>
-                                    <Input
-                                      className="form-control-alternative"
-                                      defaultValue="Colombo"
-                                      id="input-city"
-                                      placeholder="City"
-                                      type="text"
-                                    />
-                                  </FormGroup>
-                                </Col>
-                                <Col lg="4">
-                                  <FormGroup>
-                                    <label
-                                      className="form-control-label"
-                                      htmlFor="input-country"
-                                    >
-                                      Country
-                                    </label>
-                                    <Input
-                                      className="form-control-alternative"
-                                      defaultValue="Sri Lanka"
-                                      id="input-country"
-                                      placeholder="Country"
-                                      type="text"
-                                    />
-                                  </FormGroup>
-                                </Col>
-                                <Col lg="4">
-                                  <FormGroup>
-                                    <label
-                                      className="form-control-label"
-                                      htmlFor="input-country"
-                                    >
-                                      Postal code
-                                    </label>
-                                    <Input
-                                      className="form-control-alternative"
-                                      id="input-postal-code"
-                                      defaultValue="11200"
-                                      placeholder="Postal code"
-                                      type="number"
-                                    />
-                                  </FormGroup>
-                                </Col>
-
-
-
-                              </Row>
+                                Billing information
+                              </h6>
+                              <div className="pl-lg-4">
+                                <Row>
+                                  <Col lg="6">
+                                    <FormGroup>
+                                      <label
+                                        htmlFor="input-credit-card-number"
+                                        className="form-control-label"
+                                      >
+                                        Credit Card Number
+                                      </label>
+                                      <Input
+                                        type="text"
+                                        className="form-control-alternative"
+                                        defaultValue="4532187519556819"
+                                        id="input-credit-card-number"
+                                        placeholder="Your Credit Card Number"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                  <Col lg="2">
+                                    <FormGroup>
+                                      <label htmlFor="input-credit-card-type">
+                                        Credit Card Type
+                                      </label>
+                                      <Input
+                                        type="text"
+                                        className="form-control-alternative"
+                                        defaultValue="Visa"
+                                        id="input-credit-card-type"
+                                        placeholder="Credit Card Type"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                  <Col lg="2">
+                                    <FormGroup>
+                                      <label htmlFor="input-credit-card-cvv">
+                                        CVV2
+                                      </label>
+                                      <Input
+                                        type="text"
+                                        className="form-control-alternative"
+                                        defaultValue="092"
+                                        id="input-credit-card-cvv"
+                                        placeholder="CVV"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                  <Col lg="2">
+                                    <FormGroup>
+                                      <label htmlFor="input-credit-card-expire-date">
+                                        Expires
+                                      </label>
+                                      <Input
+                                        type="text"
+                                        className="form-control-alternative"
+                                        defaultValue="02/21"
+                                        id="input-credit-card-expire-date"
+                                        placeholder="MM/YY"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                  <Col md="12">
+                                    <FormGroup>
+                                      <label
+                                        className="form-control-label"
+                                        htmlFor="input-address"
+                                      >
+                                        Billing Address
+                                      </label>
+                                      <Input
+                                        className="form-control-alternative"
+                                        defaultValue='"Valley of Death", Serpentine Road, Colombo 08'
+                                        id="input-address"
+                                        placeholder="Home Address"
+                                        type="text"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                </Row>
+                                <Row>
+                                  <Col lg="4">
+                                    <FormGroup>
+                                      <label
+                                        className="form-control-label"
+                                        htmlFor="input-city"
+                                      >
+                                        City
+                                      </label>
+                                      <Input
+                                        className="form-control-alternative"
+                                        defaultValue="Colombo"
+                                        id="input-city"
+                                        placeholder="City"
+                                        type="text"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                  <Col lg="4">
+                                    <FormGroup>
+                                      <label
+                                        className="form-control-label"
+                                        htmlFor="input-country"
+                                      >
+                                        Country
+                                      </label>
+                                      <Input
+                                        className="form-control-alternative"
+                                        defaultValue="Sri Lanka"
+                                        id="input-country"
+                                        placeholder="Country"
+                                        type="text"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                  <Col lg="4">
+                                    <FormGroup>
+                                      <label
+                                        className="form-control-label"
+                                        htmlFor="input-country"
+                                      >
+                                        Postal code
+                                      </label>
+                                      <Input
+                                        className="form-control-alternative"
+                                        id="input-postal-code"
+                                        defaultValue="11200"
+                                        placeholder="Postal code"
+                                        type="number"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                </Row>
+                              </div>
                               <hr className="my-4" />
-                              <Row>
-                                <Col className="text-right" xs="12">
-                                  <Button
-                                    color="primary"
-                                    href="#pablo"
-                                    onClick={e => e.preventDefault()}
-                                    size="sm"
-                                  >
-                                    Update
-                                  </Button>
-                                </Col>
-                              </Row>
-                            </div>
+                              <div className="pl-lg-4">
+                                <h6 className="heading-small text-muted mb-4">
+                                  Contact information
+                                </h6>
+                                <Row>
+                                  <Col md="12">
+                                    <FormGroup>
+                                      <label
+                                        className="form-control-label"
+                                        htmlFor="input-address"
+                                      >
+                                        Billing Address
+                                      </label>
+                                      <Input
+                                        className="form-control-alternative"
+                                        defaultValue='"Valley of Death", Serpentine Road, Colombo 08'
+                                        id="input-address"
+                                        placeholder="Home Address"
+                                        type="text"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                </Row>
+                                <Row>
+                                  <Col lg="4">
+                                    <FormGroup>
+                                      <label
+                                        className="form-control-label"
+                                        htmlFor="input-city"
+                                      >
+                                        City
+                                      </label>
+                                      <Input
+                                        className="form-control-alternative"
+                                        defaultValue="Colombo"
+                                        id="input-city"
+                                        placeholder="City"
+                                        type="text"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                  <Col lg="4">
+                                    <FormGroup>
+                                      <label
+                                        className="form-control-label"
+                                        htmlFor="input-country"
+                                      >
+                                        Country
+                                      </label>
+                                      <Input
+                                        className="form-control-alternative"
+                                        defaultValue="Sri Lanka"
+                                        id="input-country"
+                                        placeholder="Country"
+                                        type="text"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                  <Col lg="4">
+                                    <FormGroup>
+                                      <label
+                                        className="form-control-label"
+                                        htmlFor="input-country"
+                                      >
+                                        Postal code
+                                      </label>
+                                      <Input
+                                        className="form-control-alternative"
+                                        id="input-postal-code"
+                                        defaultValue="11200"
+                                        placeholder="Postal code"
+                                        type="number"
+                                      />
+                                    </FormGroup>
+                                  </Col>
+                                </Row>
+                                <hr className="my-4" />
+                                <Row>
+                                  <Col className="text-right" xs="12">
+                                    <Button
+                                      color="primary"
+                                      href="#pablo"
+                                      onClick={e => e.preventDefault()}
+                                      size="sm"
+                                    >
+                                      Update
+                                    </Button>
+                                  </Col>
+                                </Row>
+                              </div>
+                            </Col>
                           </Row>
                         </TabPane>
                         <TabPane tabId="3">
                           <Row>
-                            <Col sm="12">
-
+                            <Col sm="12" className="mt-2">
                               {/* Emergency Contact Information */}
                               <h6 className="heading-small text-muted mb-4">
                                 Fire Service information [Emergency authority]
-                            </h6>
+                              </h6>
                               <div className="pl-lg-4">
                                 <p className="text-success">Nearest Fire Station is @Colombo14</p>
                                 <Row>
@@ -434,7 +429,7 @@ class Settings extends React.Component {
                                         htmlFor="input-address"
                                       >
                                         Address
-                                </label>
+                                      </label>
                                       <Input
                                         className="form-control-alternative"
                                         defaultValue="Sirimavo Bandaranayake, Mawatha, Colombo 14"
@@ -451,7 +446,7 @@ class Settings extends React.Component {
                                         htmlFor="input-em-mail-address"
                                       >
                                         Email Address
-                                </label>
+                                      </label>
                                       <Input
                                         className="form-control-alternative"
                                         defaultValue="mharishchandrah@yahoo.com"
@@ -470,7 +465,7 @@ class Settings extends React.Component {
                                         htmlFor="input-city"
                                       >
                                         City
-                                </label>
+                                      </label>
                                       <Input
                                         className="form-control-alternative"
                                         defaultValue="Colombo"
@@ -523,7 +518,7 @@ class Settings extends React.Component {
                                         htmlFor="input-mobile-number-1"
                                       >
                                         Office Telephone 1
-                                </label>
+                                      </label>
                                       <Input
                                         className="form-control-alternative"
                                         id="input-mobile-number-1"
@@ -540,7 +535,7 @@ class Settings extends React.Component {
                                         htmlFor="input-mobile-number-2"
                                       >
                                         Office Telephone 2
-                                </label>
+                                      </label>
                                       <Input
                                         className="form-control-alternative"
                                         id="input-mobile-number-2"
