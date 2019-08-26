@@ -9,8 +9,9 @@ export const login = user => dispatch => {
     type: actionTypes.AUTH_START
   });
   axios
-    .post("http://localhost:8000/api/auth/login", user)
+    .post("http://localhost:8084/api/users/signin", user)
     .then(res => {
+      console.log(res);
       dispatch({
         type: actionTypes.AUTH_SUCCESS,
         payload: res.data
@@ -70,7 +71,7 @@ export const register = user => dispatch => {
     type: actionTypes.AUTH_START
   });
   axios
-    .post("http://localhost:8000/api/auth/register", user)
+    .post("http://localhost:8084/api/users/signup", user)
     .then(res => {
       dispatch({
         type: actionTypes.AUTH_SUCCESS,
@@ -92,7 +93,7 @@ export const register = user => dispatch => {
     });
 };
 
-// LOAD USER
+// TODO: LOAD USER
 export const loadUser = () => (dispatch, getState) => {
   dispatch({
     type: actionTypes.USER_LOADING

@@ -1,10 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    foxToken: localStorage.getItem('foxToken'),
-    webAPI: {
-        token: null
-    },
+    ignioToken: localStorage.getItem('ignioToken'),
     user: {},
     isAuthenticated: false,
     isLoading: false
@@ -15,66 +12,48 @@ export default function (state=initialState, action) {
         case actionTypes.AUTH_START:
             return {
                 ...state,
-                webAPI: {
-                    ...state.webAPI
-                },
                 isLoading: true
             };
         case actionTypes.USER_LOADING:
-            const foxToken = localStorage.getItem('foxToken');
+            const ignioToken = localStorage.getItem('ignioToken');
             return {
                 ...state,
-                webAPI: {
-                    ...state.webAPI
-                },
                 isLoading: true,
-                foxToken: foxToken
+                ignioToken: ignioToken
             };
         case actionTypes.USER_LOADED:
             return {
                 ...state,
-                webAPI: {
-                    ...state.webAPI
-                },
                 user: action.payload,
                 isLoading: false,
                 isAuthenticated: true
             };
         case actionTypes.AUTH_SUCCESS:
-            localStorage.setItem('foxToken', action.payload.token);
+            localStorage.setItem('ignioToken', action.payload.token);
             return {
                 ...state,
-                webAPI: {
-                    ...state.webAPI
-                },
-                user: action.payload.user,
-                foxToken: action.payload.token,
+                user: action.payload,
+                ignioToken: action.payload.token,
                 isAuthenticated: true,
                 isLoading: false
             };
         case actionTypes.USER_LOGOUT:
-            localStorage.removeItem('foxToken');
+            localStorage.removeItem('ignioToken');
             return {
                 ...state,
                 isLoading: false,
                 isAuthenticated: false,
                 user: null,
-                foxToken: null,
-                webAPI: {
-                    token: null
-                }
+                ignioToken: null
             };
         case actionTypes.AUTH_FAIL:
-            localStorage.removeItem('foxToken');
+            localStorage.removeItem('ignioToken');
             return {
                 ...state,
                 isLoading: false,
                 isAuthenticated: false,
                 user: {},
-                foxToken: null,
-                webAPI: {
-                    ...state.webAPI
-                }
+                ignioToken: null
             };
         default:
             return state;
