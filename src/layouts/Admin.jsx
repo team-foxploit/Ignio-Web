@@ -5,6 +5,7 @@ import { Container } from "reactstrap";
 // REDUX
 import { connect } from "react-redux";
 import { login } from '../store/actions/authActions';
+import { fetchDataById } from '../store/actions/dataActions';
 // core components
 import AdminNavbar from "components/Navbars/AdminNavbar.jsx";
 import AdminFooter from "components/Footers/AdminFooter.jsx";
@@ -14,14 +15,15 @@ import routes from "routes.js";
 
 class Admin extends React.Component {
 
-  // componentDidMount(){
-  //   if(!this.props.ignioToken){
-  //     this.props.login({
-  //       "username": "luke2",
-  //       "password": "password"
-  //     });
-  //   }
-  // }
+  componentDidMount(){
+    // if(!this.props.ignioToken){
+    //   this.props.login({
+    //     "username": "luke2",
+    //     "password": "password"
+    //   });
+    // }
+    // this.props.fetchDataById("NODEIGNIOF101");
+  }
 
   componentDidUpdate(e) {
     document.documentElement.scrollTop = 0;
@@ -97,4 +99,4 @@ const mapStateToProps = (state) => {
   );
 }
 
-export default connect(mapStateToProps, { login })(Admin);
+export default connect(mapStateToProps, { login, fetchDataById })(Admin);
