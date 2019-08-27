@@ -14,21 +14,21 @@ import routes from "routes.js";
 
 class Admin extends React.Component {
 
-  componentDidMount(){
-    if(!this.props.ignioToken){
-      this.props.login({
-        "username": "luke2",
-        "password": "password"
-      });
-    }
-  }
+  // componentDidMount(){
+  //   if(!this.props.ignioToken){
+  //     this.props.login({
+  //       "username": "luke2",
+  //       "password": "password"
+  //     });
+  //   }
+  // }
 
   componentDidUpdate(e) {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     this.refs.mainContent.scrollTop = 0;
   }
-  
+
   getRoutes = routes => {
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
@@ -89,10 +89,10 @@ class Admin extends React.Component {
 const mapStateToProps = (state) => {
   return (
     {
-      user : state.auth.user,
-      ignioToken : state.auth.ignioToken,
-      isAuthenticated : state.auth.isAuthenticated,
-      isLoading : state.auth.isLoading
+      user: state.auth.user,
+      ignioToken: state.auth.ignioToken,
+      isAuthenticated: state.auth.isAuthenticated,
+      isLoading: state.auth.isLoading
     }
   );
 }
