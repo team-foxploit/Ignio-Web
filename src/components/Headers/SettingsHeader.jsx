@@ -1,7 +1,7 @@
 import React from "react";
 
 // reactstrap components
-import { Badge, Button, Card, CardBody, CardText, CardTitle, Container, Row, Col } from "reactstrap";
+import { Button, Card, CardBody, CardText, CardTitle, Container, Row, Col } from "reactstrap";
 
 class SettingsHeader extends React.Component {
   render() {
@@ -56,7 +56,7 @@ class SettingsHeader extends React.Component {
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
-                          <i className=" ni ni-box-2" />
+                            <i className=" ni ni-box-2" />
                           </div>
                         </Col>
                       </Row>
@@ -82,9 +82,9 @@ class SettingsHeader extends React.Component {
                           </CardText>
                         </div>
                         <Col className="col-auto">
-                            <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                <i className="ni ni-settings" />
-                            </div>
+                          <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                            <i className="ni ni-settings" />
+                          </div>
                         </Col>
                       </Row>
                       <p className="mt-3 mb-0 text-muted text-sm">
