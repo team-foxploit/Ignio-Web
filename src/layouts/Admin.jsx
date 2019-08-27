@@ -30,7 +30,7 @@ class Admin extends React.Component {
     document.scrollingElement.scrollTop = 0;
     this.refs.mainContent.scrollTop = 0;
   }
-  
+
   getRoutes = routes => {
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
@@ -91,10 +91,10 @@ class Admin extends React.Component {
 const mapStateToProps = (state) => {
   return (
     {
-      user : state.auth.user,
-      ignioToken : state.auth.ignioToken,
-      isAuthenticated : state.auth.isAuthenticated,
-      isLoading : state.auth.isLoading
+      user: state.auth.user,
+      ignioToken: state.auth.ignioToken,
+      isAuthenticated: state.auth.isAuthenticated,
+      isLoading: state.auth.isLoading
     }
   );
 }
