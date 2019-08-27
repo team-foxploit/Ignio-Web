@@ -2,7 +2,6 @@ import React from "react";
 
 // reactstrap components
 import {
-  Button,
   Card,
   CardHeader,
   CardBody,
@@ -24,7 +23,7 @@ class Tables extends React.Component {
           <Row>
             <Col sm="12" md="3">
               <Col sm="12">
-                <Card className="card-stats mb-4 mb-xl-0">
+                <Card className="card-stats mb-4 mb-xl-0 bg-dark">
                   <CardBody>
                     <Row>
                       <div className="col">
@@ -53,9 +52,9 @@ class Tables extends React.Component {
                   </CardBody>
                 </Card>
               </Col>
-
+              <hr></hr>
               <Col sm="12">
-                <Card className="card-stats mb-4 mb-xl-0">
+                <Card className="card-stats mb-4 mb-xl-0 bg-dark">
                   <CardBody>
                     <Row>
                       <div className="col">
@@ -85,7 +84,6 @@ class Tables extends React.Component {
                 </Card>
               </Col>
             </Col>
-
 
             <Col sm="12" lg="6">
               <Card className="card-profile shadow">
@@ -130,7 +128,7 @@ class Tables extends React.Component {
             </Col>
             <Col sm="12" md="3">
               <Col sm="12">
-                <Card className="card-stats mb-4 mb-xl-0">
+                <Card className="card-stats mb-4 mb-xl-0 bg-dark">
                   <CardBody>
                     <Row>
                       <div className="col">
@@ -159,9 +157,9 @@ class Tables extends React.Component {
                   </CardBody>
                 </Card>
               </Col>
-
+              <hr></hr>
               <Col sm="12">
-                <Card className="card-stats mb-4 mb-xl-0">
+                <Card className="card-stats mb-4 mb-xl-0 bg-dark">
                   <CardBody>
                     <Row>
                       <div className="col">
