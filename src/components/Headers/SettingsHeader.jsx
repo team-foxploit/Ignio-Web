@@ -3,7 +3,7 @@ import React from "react";
 // reactstrap components
 import { Badge, Button, Card, CardBody, CardText, CardTitle, Container, Row, Col } from "reactstrap";
 
-class Header extends React.Component {
+class SettingsHeader extends React.Component {
   render() {
     return (
       <>
@@ -49,8 +49,8 @@ class Header extends React.Component {
                         <div className="col">
                           <CardText tag="h5" className="text-uppercase text-info">
                             <Button color="primary" type="button" className="px-2">
-                              <Badge className="badge-white">4</Badge>
-                              <span>Devices</span>
+                              <i className=" ni ni-fat-add" />
+                              <span>Add Devices</span>
                             </Button>
                           </CardText>
                         </div>
@@ -74,20 +74,17 @@ class Header extends React.Component {
                     <CardBody>
                       <Row>
                         <div className="col">
-                          <CardTitle
-                            tag="h5"
-                            className="text-uppercase text-muted mb-0"
-                          >
-                            Maintainance
-                          </CardTitle>
-                          <span className="h2 font-weight-bold mb-0">
-                            3
-                          </span>
+                          <CardText tag="h5" className="text-uppercase text-info">
+                            <Button color="danger" type="button" className="px-2">
+                              <i className="ni ni-active-40"></i>
+                              <span>Test Now!</span>
+                            </Button>
+                          </CardText>
                         </div>
                         <Col className="col-auto">
-                          <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                            <i className="ni ni-settings" />
-                          </div>
+                            <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                <i className="ni ni-settings" />
+                            </div>
                         </Col>
                       </Row>
                       <p className="mt-3 mb-0 text-muted text-sm">
@@ -138,4 +135,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default SettingsHeader;

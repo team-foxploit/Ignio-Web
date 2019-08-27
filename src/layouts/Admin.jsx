@@ -1,7 +1,10 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 // reactstrap components
 import { Container } from "reactstrap";
+// REDUX
+import { connect } from "react-redux";
+import { login } from '../store/actions/authActions';
 // core components
 import AdminNavbar from "components/Navbars/AdminNavbar.jsx";
 import AdminFooter from "components/Footers/AdminFooter.jsx";
@@ -10,11 +13,22 @@ import Sidebar from "components/Sidebar/Sidebar.jsx";
 import routes from "routes.js";
 
 class Admin extends React.Component {
+
+  componentDidMount(){
+    if(!this.props.ignioToken){
+      this.props.login({
+        "username": "luke2",
+        "password": "password"
+      });
+    }
+  }
+
   componentDidUpdate(e) {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     this.refs.mainContent.scrollTop = 0;
   }
+  
   getRoutes = routes => {
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
@@ -59,7 +73,10 @@ class Admin extends React.Component {
             {...this.props}
             brandText={this.getBrandText(this.props.location.pathname)}
           />
-          <Switch>{this.getRoutes(routes)}</Switch>
+          <Switch>
+            {this.getRoutes(routes)}
+            <Redirect from="/" to="/admin/index" />
+          </Switch>
           <Container fluid className="bg-gradient-info">
             <AdminFooter />
           </Container>
@@ -69,4 +86,15 @@ class Admin extends React.Component {
   }
 }
 
-export default Admin;
+const mapStateToProps = (state) => {
+  return (
+    {
+      user : state.auth.user,
+      ignioToken : state.auth.ignioToken,
+      isAuthenticated : state.auth.isAuthenticated,
+      isLoading : state.auth.isLoading
+    }
+  );
+}
+
+export default connect(mapStateToProps, { login })(Admin);
