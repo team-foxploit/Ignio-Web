@@ -33,7 +33,7 @@ class Tables extends React.Component {
                         >
                           Sensor Reading
                           </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">
+                        <span className="h1 font-weight-bold mb-0 text-success">
                           0
                           </span>
                       </div>
@@ -44,9 +44,9 @@ class Tables extends React.Component {
                       </Col>
                     </Row>
                     <p className="mt-3 mb-0 text-muted text-sm">
-                      <span className="text-success mr-2">
+                      {/* <span className="text-success mr-2">
                         <i className="fa fa-arrow-up" /> 0%
-                        </span>{" "}
+                        </span>{" "} */}
                       <span className="text-nowrap">ppm</span>
                     </p>
                   </CardBody>
@@ -64,7 +64,7 @@ class Tables extends React.Component {
                         >
                           Sensor Reading
                           </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">
+                        <span className="h1 font-weight-bold mb-0 text-success">
                           0
                           </span>
                       </div>
@@ -75,9 +75,9 @@ class Tables extends React.Component {
                       </Col>
                     </Row>
                     <p className="mt-3 mb-0 text-muted text-sm">
-                      <span className="text-success mr-2">
+                      {/* <span className="text-success mr-2">
                         <i className="fa fa-arrow-up" /> 0%
-                        </span>{" "}
+                        </span>{" "} */}
                       <span className="text-nowrap">ppm</span>
                     </p>
                   </CardBody>
@@ -86,7 +86,7 @@ class Tables extends React.Component {
             </Col>
 
             <Col sm="12" lg="6">
-              <Card className="card-profile shadow">
+              <Card className="card-profile shadow bg-gradient-dark">
                 <Row className="justify-content-center">
                   <Col className="order-lg-2" lg="3">
                     <div className="card-profile-image">
@@ -94,31 +94,32 @@ class Tables extends React.Component {
                     </div>
                   </Col>
                 </Row>
-                <CardHeader className="text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-                  <div className="d-flex justify-content-between">
-
+                <CardHeader className="text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4 bg-gradient-dark">
+                  <div>
+                    <h2 className="text-purple">
+                      Ignio at a glance
+                    </h2>
                   </div>
                 </CardHeader>
                 <CardBody className="pt-0 pt-md-4">
                   <Row>
-                    <div className="col">
+                    <div className="col  text-center">
+                      <div className="icon icon-shape icon-xl bg-success text-white rounded-circle shadow">
+                        <i className="fas fa-check fa-7x" />
+                      </div>
                       <div className="card-profile-stats d-flex justify-content-center mt-md-5">
                         <h1 className="text-success">You're Safe!</h1>
                       </div>
                     </div>
                   </Row>
-                  <div className="text-center">
-                    <h3>
-                      Ignio at a glance
-                    </h3>
-                    <div className="h5 font-weight-300">
+                  <div className="text-center text-white">
+                    <div className="h5 font-weight-300 text-success">
                       Your devices are working fine.
                     </div>
-
                     <hr className="my-4" />
-                    <p>
-                      Ignio is taking care of you.
-                    </p>
+                    {/* <p>
+                      Ignio takes care of you.
+                    </p> */}
                     <a href="#pablo" onClick={e => e.preventDefault()}>
                       Show more
                     </a>
@@ -138,7 +139,7 @@ class Tables extends React.Component {
                         >
                           Sensor Reading
                           </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">
+                        <span className="h1 font-weight-bold mb-0 text-success">
                           0
                           </span>
                       </div>
@@ -149,9 +150,9 @@ class Tables extends React.Component {
                       </Col>
                     </Row>
                     <p className="mt-3 mb-0 text-muted text-sm">
-                      <span className="text-success mr-2">
+                      {/* <span className="text-success mr-2">
                         <i className="fa fa-arrow-up" /> 0%
-                        </span>{" "}
+                        </span>{" "} */}
                       <span className="text-nowrap">ppm</span>
                     </p>
                   </CardBody>
@@ -169,7 +170,7 @@ class Tables extends React.Component {
                         >
                           Sensor Reading
                           </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">
+                        <span className="h1 font-weight-bold mb-0 text-success">
                           0
                           </span>
                       </div>
@@ -180,9 +181,9 @@ class Tables extends React.Component {
                       </Col>
                     </Row>
                     <p className="mt-3 mb-0 text-muted text-sm">
-                      <span className="text-success mr-2">
+                      {/* <span className="text-success mr-2">
                         <i className="fa fa-arrow-up" /> 0%
-                        </span>{" "}
+                        </span>{" "} */}
                       <span className="text-nowrap">ppm</span>
                     </p>
                   </CardBody>
