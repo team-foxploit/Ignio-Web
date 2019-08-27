@@ -23,7 +23,9 @@ class Settings extends React.Component {
     super(props);
 
     this.toggle = this.toggle.bind(this);
+    this.isButtonClicked = this.isButtonClicked.bind(this);
     this.state = {
+      disabled: true,
       activeTab: '1'
     };
   }
@@ -35,6 +37,14 @@ class Settings extends React.Component {
       });
     }
   }
+
+  isButtonClicked() {
+    // this.setState({
+    //   disabled: false
+    // });
+    this.setState({ disabled: !this.state.disabled })
+  }
+
   render() {
     return (
       <>
@@ -424,6 +434,26 @@ class Settings extends React.Component {
                                 <h6 className="heading-small text-muted mb-4">
                                   Fire Service information [Emergency authority]
                                 </h6>
+                                <Row>
+                                  <label
+                                    className="form-control-label"
+                                    htmlFor="input-address"
+                                  >
+                                    Here contains critical info. Are you sure?
+                                  </label>
+                                  <Col className="text-left" xs="12">
+                                    <Button
+                                      color="warning"
+                                      href="#pablo"
+                                      onClick={this.isButtonClicked.bind(this)}
+                                      // onClick={() => { this.isButtonClicked(); }}
+                                      size="sm"
+                                    >
+                                      Yes, I understand
+                                    </Button>
+                                  </Col>
+                                </Row>
+                                <hr></hr>
                                 <div className="pl-lg-4">
                                   <p className="text-success">Nearest Fire Station is @Colombo14</p>
                                   <Row>
@@ -441,6 +471,7 @@ class Settings extends React.Component {
                                           id="input-address"
                                           placeholder="Station Address"
                                           type="text"
+                                          disabled={this.state.disabled}
                                         />
                                       </FormGroup>
                                     </Col>
@@ -458,6 +489,7 @@ class Settings extends React.Component {
                                           id="input-em-mail-address"
                                           placeholder="Email Address"
                                           type="email"
+                                          disabled={this.state.disabled}
                                         />
                                       </FormGroup>
                                     </Col>
@@ -477,6 +509,7 @@ class Settings extends React.Component {
                                           id="input-city"
                                           placeholder="City"
                                           type="text"
+                                          disabled={this.state.disabled}
                                         />
                                       </FormGroup>
                                     </Col>
@@ -494,6 +527,7 @@ class Settings extends React.Component {
                                           id="input-country"
                                           placeholder="Country"
                                           type="text"
+                                          disabled={this.state.disabled}
                                         />
                                       </FormGroup>
                                     </Col>
@@ -511,6 +545,7 @@ class Settings extends React.Component {
                                           defaultValue="12040"
                                           placeholder="Postal code"
                                           type="number"
+                                          disabled={this.state.disabled}
                                         />
                                       </FormGroup>
                                     </Col>
@@ -530,6 +565,7 @@ class Settings extends React.Component {
                                           defaultValue="+94112431353"
                                           placeholder="Postal code"
                                           type="text"
+                                          disabled={this.state.disabled}
                                         />
                                       </FormGroup>
                                     </Col>
@@ -547,6 +583,7 @@ class Settings extends React.Component {
                                           defaultValue="+94112683370"
                                           placeholder="Postal code"
                                           type="text"
+                                          disabled={this.state.disabled}
                                         />
                                       </FormGroup>
                                     </Col>
