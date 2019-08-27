@@ -16,13 +16,13 @@ import routes from "routes.js";
 class Admin extends React.Component {
 
   componentDidMount(){
-    if(!this.props.ignioToken){
-      this.props.login({
-        "username": "luke2",
-        "password": "password"
-      });
-    }
-    this.props.fetchDataById("NODEIGNIOF101");
+    // if(!this.props.ignioToken){
+    //   this.props.login({
+    //     "username": "luke2",
+    //     "password": "password"
+    //   });
+    // }
+    // this.props.fetchDataById("NODEIGNIOF101");
   }
 
   componentDidUpdate(e) {
