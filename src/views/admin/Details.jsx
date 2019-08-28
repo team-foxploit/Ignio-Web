@@ -1,4 +1,5 @@
 import React from "react";
+// import { Link } from "react-router-dom";
 // node.js library that concatenates classes (strings)
 import classnames from "classnames";
 import { withRouter } from 'react-router-dom';
@@ -13,14 +14,16 @@ import {
   Card,
   CardHeader,
   CardBody,
-  NavItem,
-  NavLink,
-  Nav,
   Progress,
   Table,
   Container,
   Row,
-  Col
+  Col,
+  UncontrolledCollapse,
+  Navbar,
+  NavItem,
+  NavLink,
+  Nav
 } from "reactstrap";
 
 // core components
@@ -39,6 +42,7 @@ import { connect } from "react-redux";
 class Details extends React.Component {
   state = {
     activeNav: 1,
+    navPills: 1,
     chartExample1Data: "data1",
     activeDeviceId: "",
     dataSet: {},
@@ -46,12 +50,18 @@ class Details extends React.Component {
       //Bring in data
       labels: ["Jan", "Feb", "March"],
       datasets: [
-          {
-              label: "Sales",
-              data: [86, 67, 91],
-          }
+        {
+          label: "Sales",
+          data: [86, 67, 91],
+        }
       ]
     },
+  };
+  toggleNavsPills = (e, state, index) => {
+    e.preventDefault();
+    this.setState({
+      [state]: index
+    });
   };
   toggleNavs = (e, index) => {
     e.preventDefault();
@@ -73,14 +83,14 @@ class Details extends React.Component {
     }
     console.log("Load data from the server!");
     // console.log(this.props);
-    
+
     this.props.fetchDataById("NODEIGNIOF101");
   }
-  componentWillReceiveProps(nextProps){
-    if(!nextProps.data.showChart && nextProps.data.deviceIds[0]){
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.data.showChart && nextProps.data.deviceIds[0]) {
       // console.log(nextProps.data.deviceIds[0]);
       // console.log(chartExample1[this.state.chartExample1Data]);
-      
+
       this.props.setActiveDevice(nextProps.data.deviceIds[0]);
       this.props.setActiveDeviceData(createDataSet(nextProps.data.deviceData, nextProps.data.deviceIds[0]));
       console.log(this.props);
@@ -90,17 +100,128 @@ class Details extends React.Component {
       //   console.log(this.state);
       // });
     }
-    
   }
-  componentDidUpdate(){
+  componentDidUpdate() {
     console.log(this.props.data["activeDeviceData"]["temperatureDataSet"]);
   }
+
   render() {
     return (
       <>
         <Header />
         {/* Page content */}
         <Container className="mt--7 mb-4" fluid>
+          <Navbar
+            className="navbar-horizontal navbar-light bg-gradient-warning mb-4"
+            expand="lg"
+          >
+            <Container>
+              {/* <NavbarBrand href="#pablo" onClick={e => e.preventDefault()}>
+                Default Color
+            </NavbarBrand> */}
+              <button
+                aria-controls="navbar-default"
+                aria-expanded={false}
+                aria-label="Toggle navigation"
+                className="navbar-toggler"
+                data-target="#navbar-default"
+                data-toggle="collapse"
+                id="navbar-default"
+                type="button"
+              >
+                <span className="navbar-toggler-icon" />
+              </button>
+              <UncontrolledCollapse navbar toggler="#navbar-default">
+                <div className="navbar-collapse-header">
+                  <Row>
+                    {/* <Col className="collapse-brand" xs="6">
+                      <Link to="/">
+                        <img
+                          alt="..."
+                          src={require("assets/img/brand/blue.png")}
+                        />
+                      </Link>
+                    </Col> */}
+                    <Col className="collapse-close" xs="6">
+                      <button
+                        aria-controls="navbar-default"
+                        aria-expanded={false}
+                        aria-label="Toggle navigation"
+                        className="navbar-toggler"
+                        data-target="#navbar-default"
+                        data-toggle="collapse"
+                        id="navbar-default"
+                        type="button"
+                      >
+                        <span />
+                        <span />
+                      </button>
+                    </Col>
+                  </Row>
+                </div>
+                <Nav
+                  className="nav-fill flex-column flex-sm-row"
+                  id="tabs-text"
+                  pills
+                  role="tablist"
+                >
+                  <NavItem>
+                    <NavLink
+                      aria-selected={this.state.navPills === 1}
+                      className={classnames("mb-sm-3 mb-md-0", {
+                        active: this.state.navPills === 1
+                      })}
+                      onClick={e => this.toggleNavsPills(e, "navPills", 1)}
+                      href="#pablo"
+                      role="tab"
+                    >
+                      Device 1
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      aria-selected={this.state.navPills === 2}
+                      className={classnames("mb-sm-3 mb-md-0", {
+                        active: this.state.navPills === 2
+                      })}
+                      onClick={e => this.toggleNavsPills(e, "navPills", 2)}
+                      href="#pablo"
+                      role="tab"
+                    >
+                      Device 2
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      aria-selected={this.state.navPills === 3}
+                      className={classnames("mb-sm-3 mb-md-0", {
+                        active: this.state.navPills === 3
+                      })}
+                      onClick={e => this.toggleNavsPills(e, "navPills", 3)}
+                      href="#pablo"
+                      role="tab"
+                    >
+                      Device 3
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      aria-selected={this.state.navPills === 3}
+                      className={classnames("mb-sm-3 mb-md-0", {
+                        active: this.state.navPills === 3
+                      })}
+                      onClick={e => this.toggleNavsPills(e, "navPills", 3)}
+                      href="#pablo"
+                      role="tab"
+                    >
+                      Device 4
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+              </UncontrolledCollapse>
+            </Container>
+          </Navbar>
+
           <Row>
             <Col className="mb-6 mb-xl-3" xl="12">
               <Card className="bg-gradient-default shadow">
@@ -114,15 +235,17 @@ class Details extends React.Component {
                 <CardBody>
                   {/* Chart */}
                   <div className="chart">
-                    {this.props.data.showChart ? 
+                    {this.props.data.showChart ? (
                       <Line
-                        data={this.props.data["activeDeviceData"]["co_ppmDataSet"]}
+                        data={
+                          this.props.data["activeDeviceData"]["co_ppmDataSet"]
+                        }
                         options={chartExample1.ppmUnitOptions}
                         getDatasetAtEvent={e => console.log(e)}
                       />
-                      : 
-                      <h3 className="text-primary">loading...</h3>
-                    }
+                    ) : (
+                        <h3 className="text-primary">loading...</h3>
+                      )}
                   </div>
                 </CardBody>
               </Card>
@@ -139,15 +262,19 @@ class Details extends React.Component {
                 <CardBody>
                   {/* Temperature Chart */}
                   <div className="chart">
-                    {this.props.data.showChart ? 
-                        <Line
-                          data={this.props.data["activeDeviceData"]["temperatureDataSet"]}
-                          options={chartExample1.temperatureUnitOptions}
-                          getDatasetAtEvent={e => console.log(e)}
-                        />
-                      :
-                      <h3 className="text-primary">loading...</h3>
-                    }
+                    {this.props.data.showChart ? (
+                      <Line
+                        data={
+                          this.props.data["activeDeviceData"][
+                          "temperatureDataSet"
+                          ]
+                        }
+                        options={chartExample1.temperatureUnitOptions}
+                        getDatasetAtEvent={e => console.log(e)}
+                      />
+                    ) : (
+                        <h3 className="text-primary">loading...</h3>
+                      )}
                   </div>
                 </CardBody>
               </Card>
@@ -167,15 +294,19 @@ class Details extends React.Component {
                 <CardBody>
                   {/* Chart */}
                   <div className="chart">
-                    {this.props.data.showChart ? 
+                    {this.props.data.showChart ? (
                       <Line
-                        data={this.props.data["activeDeviceData"]["lp_gas_ppmDataSet"]}
+                        data={
+                          this.props.data["activeDeviceData"][
+                          "lp_gas_ppmDataSet"
+                          ]
+                        }
                         options={chartExample1.ppmUnitOptions}
                         getDatasetAtEvent={e => console.log(e)}
                       />
-                      :
-                      <h3 className="text-primary">loading...</h3> 
-                    }
+                    ) : (
+                        <h3 className="text-primary">loading...</h3>
+                      )}
                   </div>
                 </CardBody>
               </Card>
@@ -185,22 +316,28 @@ class Details extends React.Component {
                 <CardHeader className="bg-transparent">
                   <Row className="align-items-center">
                     <div className="col">
-                      <h2 className="text-white mb-0">Smoke Particles PPM</h2>
+                      <h2 className="text-white mb-0">
+                        Smoke Particles Density
+                      </h2>
                     </div>
                   </Row>
                 </CardHeader>
                 <CardBody>
                   {/* Chart */}
                   <div className="chart">
-                    {this.props.data.showChart ? 
+                    {this.props.data.showChart ? (
                       <Line
-                        data={this.props.data["activeDeviceData"]["particle_ppmDataSet"]}
+                        data={
+                          this.props.data["activeDeviceData"][
+                          "particle_ppmDataSet"
+                          ]
+                        }
                         options={chartExample1.ppmUnitOptions}
                         getDatasetAtEvent={e => console.log(e)}
                       />
-                      :
-                      <h3 className="text-primary">loading...</h3> 
-                    }
+                    ) : (
+                        <h3 className="text-primary">loading...</h3>
+                      )}
                   </div>
                 </CardBody>
               </Card>
