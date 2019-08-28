@@ -1,7 +1,6 @@
 import React from "react";
 
 // reactstrap components
-// reactstrap components
 import {
   CardHeader,
   CardBody,
@@ -11,12 +10,18 @@ import {
   Container,
   Row,
   Col,
-  TabContent, TabPane, Nav, NavItem, NavLink, Card, Button
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink,
+  Card,
+  Button
 } from "reactstrap";
 
 // core components
 import SettingsHeader from "components/Headers/SettingsHeader.jsx";
-import classnames from 'classnames';
+import classnames from "classnames";
 
 class Settings extends React.Component {
   constructor(props) {
@@ -26,7 +31,7 @@ class Settings extends React.Component {
     this.isButtonClicked = this.isButtonClicked.bind(this);
     this.state = {
       disabled: true,
-      activeTab: '1'
+      activeTab: "1"
     };
   }
 
@@ -42,7 +47,7 @@ class Settings extends React.Component {
     // this.setState({
     //   disabled: false
     // });
-    this.setState({ disabled: !this.state.disabled })
+    this.setState({ disabled: !this.state.disabled });
   }
 
   render() {
@@ -67,24 +72,36 @@ class Settings extends React.Component {
                       <Nav tabs>
                         <NavItem>
                           <NavLink
-                            className={classnames({ active: this.state.activeTab === '1' })}
-                            onClick={() => { this.toggle('1'); }}
+                            className={classnames({
+                              active: this.state.activeTab === "1"
+                            })}
+                            onClick={() => {
+                              this.toggle("1");
+                            }}
                           >
                             Account
                           </NavLink>
                         </NavItem>
                         <NavItem>
                           <NavLink
-                            className={classnames({ active: this.state.activeTab === '2' })}
-                            onClick={() => { this.toggle('2'); }}
+                            className={classnames({
+                              active: this.state.activeTab === "2"
+                            })}
+                            onClick={() => {
+                              this.toggle("2");
+                            }}
                           >
                             Billing
                           </NavLink>
                         </NavItem>
                         <NavItem>
                           <NavLink
-                            className={classnames({ active: this.state.activeTab === '3' })}
-                            onClick={() => { this.toggle('3'); }}
+                            className={classnames({
+                              active: this.state.activeTab === "3"
+                            })}
+                            onClick={() => {
+                              this.toggle("3");
+                            }}
                           >
                             Emergency
                           </NavLink>
@@ -455,7 +472,9 @@ class Settings extends React.Component {
                                 </Row>
                                 <hr></hr>
                                 <div className="pl-lg-4">
-                                  <p className="text-success">Nearest Fire Station is @Colombo14</p>
+                                  <p className="text-success">
+                                    Nearest Fire Station is @Colombo14
+                                  </p>
                                   <Row>
                                     <Col md="8">
                                       <FormGroup>
@@ -520,7 +539,7 @@ class Settings extends React.Component {
                                           htmlFor="input-country"
                                         >
                                           Country
-                                  </label>
+                                        </label>
                                         <Input
                                           className="form-control-alternative"
                                           defaultValue="Sri Lanka"
@@ -538,7 +557,7 @@ class Settings extends React.Component {
                                           htmlFor="input-country"
                                         >
                                           Postal code
-                                  </label>
+                                        </label>
                                         <Input
                                           className="form-control-alternative"
                                           id="input-postal-code"
@@ -598,7 +617,7 @@ class Settings extends React.Component {
                                         size="sm"
                                       >
                                         Update
-                                    </Button>
+                                      </Button>
                                     </Col>
                                   </Row>
                                 </div>

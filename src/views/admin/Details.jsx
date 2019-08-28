@@ -242,8 +242,7 @@ class Details extends React.Component {
                       <td>31 Jul 2019 12:40 PM</td>
                       <td>3.45%</td>
                       <td>
-                        <i className="fas fa-arrow-up text-danger mr-3" />{" "}
-                        0.17%
+                        <i className="fas fa-arrow-up text-danger mr-3" /> 0.17%
                       </td>
                     </tr>
                     <tr>
