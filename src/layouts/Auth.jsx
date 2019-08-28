@@ -36,15 +36,14 @@ class Auth extends React.Component {
       <>
         <div className="main-content">
           <AuthNavbar />
-          <div className="header bg-gradient-warning py-7 py-lg-8">
+          <div className="header bg-gradient-warning py-1 py-lg-8">
             <Container>
-              <div className="header-body text-center mb-7">
+              <div className="header-body text-center mb-5">
                 <Row className="justify-content-center">
                   <Col lg="5" md="6">
                     <h1 className="text-white">Welcome!</h1>
                     <p className="text-lead text-light">
-                      Use these awesome forms to login or create new account in
-                      your project for free.
+                      Use your credentials to view your devices and your safety!
                     </p>
                   </Col>
                 </Row>
@@ -67,7 +66,7 @@ class Auth extends React.Component {
             </div>
           </div>
           {/* Page content */}
-          <Container className="mt--8 pb-5">
+          <Container className="mt--8">
             <Row className="justify-content-center">
               <Switch>{this.getRoutes(routes)}</Switch>
             </Row>
