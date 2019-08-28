@@ -287,7 +287,7 @@ function parseOptions(parent, options) {
 
 // 1 of Chart inside src/views/Index.jsx (Flamable Gas Emissions - Card)
 let chartExample1 = {
-  options: {
+  temperatureUnitOptions: {
     scales: {
       yAxes: [
         {
@@ -298,7 +298,7 @@ let chartExample1 = {
           ticks: {
             callback: function (value) {
               if (!(value % 10)) {
-                return value + "%";
+                return value + " 'C";
               }
             }
           }
@@ -307,7 +307,8 @@ let chartExample1 = {
     },
     tooltips: {
       callbacks: {
-        label: function (item, data) {
+        label: function(item, data) {
+          // console.log(item, data);
           var label = data.datasets[item.datasetIndex].label || "";
           var yLabel = item.yLabel;
           var content = "";
@@ -316,7 +317,43 @@ let chartExample1 = {
             content += label;
           }
 
-          content += yLabel + "%";
+          content += yLabel + " 'C";
+          return content;
+        }
+      }
+    }
+  },
+  ppmUnitOptions: {
+    scales: {
+      yAxes: [
+        {
+          gridLines: {
+            color: colors.gray[900],
+            zeroLineColor: colors.gray[900]
+          },
+          ticks: {
+            callback: function (value) {
+              if (!(value % 10)) {
+                return value + " ppm";
+              }
+            }
+          }
+        }
+      ]
+    },
+    tooltips: {
+      callbacks: {
+        label: function(item, data) {
+          // console.log(item, data);
+          var label = data.datasets[item.datasetIndex].label || "";
+          var yLabel = item.yLabel;
+          var content = "";
+
+          if (data.datasets.length > 1) {
+            content += label;
+          }
+
+          content += yLabel + " ppm";
           return content;
         }
       }
@@ -324,7 +361,7 @@ let chartExample1 = {
   },
   data1: canvas => {
     return {
-      labels: ["May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      labels: ["2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1]],
       datasets: [
         {
           label: "Performance",
@@ -333,64 +370,64 @@ let chartExample1 = {
       ]
     };
   },
-  data2: canvas => {
-    return {
-      labels: ["May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      datasets: [
-        {
-          label: "Performance",
-          data: [0, 20, 18, 25, 20, 27, 25, 31, 29]
-        }
-      ]
-    };
-  }
+  // data2: canvas => {
+  //   return {
+  //     labels: ["2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1], "2019-08-27 23:20:11".split(" ")[1]],
+  //     datasets: [
+  //       {
+  //         label: "Performance",
+  //         data: [0, 20, 18, 25, 20, 27, 25, 31, 29]
+  //       }
+  //     ]
+  //   };
+  // }
 };
 
 // 2 of Chart inside src/views/Index.jsx (Device Activity - Card)
-let chartExample2 = {
-  options: {
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            callback: function (value) {
-              if (!(value % 10)) {
-                return value + "%";
-              }
-            }
-          }
-        }
-      ]
-    },
-    tooltips: {
-      callbacks: {
-        label: function (item, data) {
-          var label = data.datasets[item.datasetIndex].label || "";
-          var yLabel = item.yLabel;
-          var content = "";
-          if (data.datasets.length > 1) {
-            content += label;
-          }
-          content += yLabel + "%";
-          return content;
-        }
-      }
-    }
-  },
-  data: {
-    labels: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: [
-      {
-        label: "Sales",
-        data: [100, 95, 78, 69, 85, 100]
-      }
-    ]
-  }
-};
+// let chartExample2 = {
+//   options: {
+//     scales: {
+//       yAxes: [
+//         {
+//           ticks: {
+//             callback: function(value) {
+//               if (!(value % 10)) {
+//                 return value + "%";
+//               }
+//             }
+//           }
+//         }
+//       ]
+//     },
+//     tooltips: {
+//       callbacks: {
+//         label: function(item, data) {
+//           var label = data.datasets[item.datasetIndex].label || "";
+//           var yLabel = item.yLabel;
+//           var content = "";
+//           if (data.datasets.length > 1) {
+//             content += label;
+//           }
+//           content += yLabel + "%";
+//           return content;
+//         }
+//       }
+//     }
+//   },
+//   data: {
+//     labels: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+//     datasets: [
+//       {
+//         label: "Sales",
+//         data: [100, 95, 78, 69, 85, 100]
+//       }
+//     ]
+//   }
+// };
 
 module.exports = {
   chartOptions, // used inside src/views/Index.jsx
   parseOptions, // used inside src/views/Index.jsx
   chartExample1, // used inside src/views/Index.jsx
-  chartExample2 // used inside src/views/Index.jsx
+  // chartExample2 // used inside src/views/Index.jsx
 };

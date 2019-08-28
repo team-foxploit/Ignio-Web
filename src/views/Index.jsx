@@ -25,6 +25,7 @@ class Tables extends React.Component {
               <Row className="mt-2">
                 <Col sm="12">
                   <Card className="card-stats mb-4 mb-xl-0 bg-dark">
+
                     <CardBody>
                       <Row>
                         <div className="col">
@@ -117,23 +118,12 @@ class Tables extends React.Component {
                     <div className="col  text-center">
                       <div className="card-profile-stats d-flex justify-content-center mt-md-5">
                         <h1 className="text-success">You're Safe!</h1>
+
                       </div>
-                    </div>
-                  </Row>
-                  <div className="text-center text-white">
-                    <div className="h5 font-weight-300 text-success">
-                      Your devices are working fine.
-                    </div>
-                    <hr className="my-4" />
-                    {/* <p>
-                      Ignio takes care of you.
-                    </p> */}
-                    <a href="#pablo" onClick={e => e.preventDefault()}>
-                      Show more
-                    </a>
-                  </div>
-                </CardBody>
-              </Card>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
             </Col>
 
             <Col sm="12" lg="3">
