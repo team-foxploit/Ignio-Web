@@ -18,10 +18,18 @@ export const fetchDataById = deviceId => (dispatch, getState) => {
     })
     .catch(error => {
       console.log(error);
-      const errors = {
-        msg: error.response.data,
-        status: error.response.status
-      };
+      var errors;
+      if(error.response){
+        errors = {
+          msg: error.response.data,
+          status: error.response.status
+        }
+      }else{
+        errors = {
+          msg: "Network Error",
+          status: 503
+        }
+      }
       dispatch({
         type: actionTypes.DEVICE_DATA_FETCH_FAIL
       });
@@ -31,6 +39,24 @@ export const fetchDataById = deviceId => (dispatch, getState) => {
       });
     });
 };
+
+// SET Active Device
+export const setActiveDevice = deviceId => dispatch => {
+  console.log("dsvgds");
+  dispatch({
+    type: actionTypes.SET_ACTIVE_DEVICE,
+    payload: deviceId
+  });
+};
+
+// SET Active Device Data
+export const setActiveDeviceData = data => dispatch => {
+  dispatch({
+    type: actionTypes.SET_ACTIVE_DEVICE_DATA,
+    payload: data
+  });
+};
+
 
 // TODO: LOGOUT USER
 /*
