@@ -4,7 +4,7 @@ const Chart = require("chart.js");
 // Code from: https://codepen.io/jedtrow/full/ygRYgo
 //
 
-Chart.elements.Rectangle.prototype.draw = function() {
+Chart.elements.Rectangle.prototype.draw = function () {
   var ctx = this._chart.ctx;
   var vm = this._view;
   var left, right, top, bottom, signX, signY, borderSkipped, radius;
@@ -211,11 +211,11 @@ function chartOptions() {
       },
       doughnut: {
         cutoutPercentage: 83,
-        legendCallback: function(chart) {
+        legendCallback: function (chart) {
           var data = chart.data;
           var content = "";
 
-          data.labels.forEach(function(label, index) {
+          data.labels.forEach(function (label, index) {
             var bgColor = data.datasets[0].backgroundColor[index];
 
             content += '<span class="chart-legend-item">';
@@ -250,7 +250,7 @@ function chartOptions() {
     ticks: {
       beginAtZero: true,
       padding: 10,
-      callback: function(value) {
+      callback: function (value) {
         if (!(value % 10)) {
           return value;
         }
@@ -296,7 +296,7 @@ let chartExample1 = {
             zeroLineColor: colors.gray[900]
           },
           ticks: {
-            callback: function(value) {
+            callback: function (value) {
               if (!(value % 10)) {
                 return value + "%";
               }
@@ -307,7 +307,7 @@ let chartExample1 = {
     },
     tooltips: {
       callbacks: {
-        label: function(item, data) {
+        label: function (item, data) {
           var label = data.datasets[item.datasetIndex].label || "";
           var yLabel = item.yLabel;
           var content = "";
@@ -353,7 +353,7 @@ let chartExample2 = {
       yAxes: [
         {
           ticks: {
-            callback: function(value) {
+            callback: function (value) {
               if (!(value % 10)) {
                 return value + "%";
               }
@@ -364,7 +364,7 @@ let chartExample2 = {
     },
     tooltips: {
       callbacks: {
-        label: function(item, data) {
+        label: function (item, data) {
           var label = data.datasets[item.datasetIndex].label || "";
           var yLabel = item.yLabel;
           var content = "";

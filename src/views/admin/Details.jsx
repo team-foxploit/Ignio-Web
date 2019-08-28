@@ -4,7 +4,7 @@ import classnames from "classnames";
 // javascipt plugin for creating charts
 import Chart from "chart.js";
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 // reactstrap components
 import {
   Button,
@@ -26,7 +26,7 @@ import {
   chartOptions,
   parseOptions,
   chartExample1,
-  chartExample2
+  // chartExample2
 } from "variables/charts.jsx";
 
 import Header from "components/Headers/Header.jsx";
@@ -168,7 +168,6 @@ class Details extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-
           </Row>
 
           <Row className="mt-3">
@@ -278,10 +277,7 @@ class Details extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-
           </Row>
-
-
 
           <Row className="mt-5">
             <Col className="mb-5 mb-xl-0" xl="8">
@@ -318,8 +314,7 @@ class Details extends React.Component {
                       <td>31 Jul 2019 12:40 PM</td>
                       <td>3.45%</td>
                       <td>
-                        <i className="fas fa-arrow-up text-danger mr-3" />{" "}
-                        0.17%
+                        <i className="fas fa-arrow-up text-danger mr-3" /> 0.17%
                       </td>
                     </tr>
                     <tr>
