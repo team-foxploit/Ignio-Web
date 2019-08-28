@@ -17,11 +17,19 @@ export const fetchDataById = deviceId => (dispatch, getState) => {
       });
     })
     .catch(error => {
-      console.log(error);
-      const errors = {
-        msg: error.response.data,
-        status: error.response.status
-      };
+      console.log();
+      var errors;
+      if(error.response){
+        errors = {
+          msg: error.response.data,
+          status: error.response.status
+        }
+      }else{
+        errors = {
+          msg: "Network Error",
+          status: 503
+        }
+      }
       dispatch({
         type: actionTypes.DEVICE_DATA_FETCH_FAIL
       });
