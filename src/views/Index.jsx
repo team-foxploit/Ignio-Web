@@ -118,12 +118,20 @@ class Tables extends React.Component {
                     <div className="col  text-center">
                       <div className="card-profile-stats d-flex justify-content-center mt-md-5">
                         <h1 className="text-success">You're Safe!</h1>
-
                       </div>
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
+                    </div>
+                  </Row>
+                  <div className="text-center text-white">
+                    <div className="h5 font-weight-300 text-success">
+                      Your devices are working fine.
+                    </div>
+                    <hr className="my-4" />
+                    <a href="#pablo" onClick={e => e.preventDefault()}>
+                      Show more
+                    </a>
+                  </div>
+                </CardBody>
+              </Card>
             </Col>
 
             <Col sm="12" lg="3">
