@@ -15,16 +15,13 @@ import routes from "routes.js";
 
 class Admin extends React.Component {
 
-  componentDidMount(){
-    // console.log(this.props);
-    // if(!this.props.ignioToken){
-    //   this.props.login({
-    //     "username": "luke2",
-    //     "password": "password"
-    //   });
-    // }
-    // this.props.fetchDataById("NODEIGNIOF101");
-  }
+  // componentWillMount(){
+  //   // console.log(this.props);
+  //   console.log("Load data from the server!");
+  //   // console.log(this.props);
+
+  //   // this.props.fetchDataById("NODEIGNIOF101");
+  // }
 
   componentDidUpdate(e) {
     document.documentElement.scrollTop = 0;

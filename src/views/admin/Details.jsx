@@ -77,29 +77,41 @@ class Details extends React.Component {
     if (window.Chart) {
       parseOptions(Chart, chartOptions());
     }
-    console.log("Load data from the server!");
+    // console.log("Load data from the server!");
     // console.log(this.props);
-
+    
     this.props.fetchDataById("NODEIGNIOF101");
   }
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.data.showChart && nextProps.data.deviceIds[0]) {
-      // console.log(nextProps.data.deviceIds[0]);
+  componentDidUpdate(){
+    if (!this.props.data.showChart && this.props.data.deviceIds[0]) {
+      // console.log(this.props.data.deviceIds[0]);
       // console.log(chartExample1[this.state.chartExample1Data]);
 
-      this.props.setActiveDevice(nextProps.data.deviceIds[0]);
-      this.props.setActiveDeviceData(createDataSet(nextProps.data.deviceData, nextProps.data.deviceIds[0]));
+      this.props.setActiveDevice(this.props.data.deviceIds[0]);
+      this.props.setActiveDeviceData(createDataSet(this.props.data.deviceData, this.props.data.deviceIds[0]));
       console.log(this.props);
       // this.setState({
-      //   dataSet: createDataSet(nextProps.data.deviceData, nextProps.data.deviceIds[0])
+      //   dataSet: createDataSet(this.props.data.deviceData, this.props.data.deviceIds[0])
       // }, () => {
       //   console.log(this.state);
       // });
     }
   }
-  componentDidUpdate() {
-    console.log(this.props.data["activeDeviceData"]["temperatureDataSet"]);
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (!nextProps.data.showChart && nextProps.data.deviceIds[0]) {
+  //     // console.log(nextProps.data.deviceIds[0]);
+  //     // console.log(chartExample1[this.state.chartExample1Data]);
+
+  //     this.props.setActiveDevice(nextProps.data.deviceIds[0]);
+  //     this.props.setActiveDeviceData(createDataSet(nextProps.data.deviceData, nextProps.data.deviceIds[0]));
+  //     console.log(this.props);
+  //     // this.setState({
+  //     //   dataSet: createDataSet(nextProps.data.deviceData, nextProps.data.deviceIds[0])
+  //     // }, () => {
+  //     //   console.log(this.state);
+  //     // });
+  //   }
+  // }
 
   render() {
     return (

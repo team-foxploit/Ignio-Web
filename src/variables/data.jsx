@@ -42,7 +42,6 @@ function createDataSet(data, deviceId) {
 
     for (const deviceData in data) {
         if (data.hasOwnProperty(deviceData)) {
-            console.log(deviceData);
             const device = data[deviceData];
             if (device.deviceId === deviceId) {
                 // console.log("WOW", device["sensorData"]);

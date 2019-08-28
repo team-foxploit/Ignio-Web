@@ -1,4 +1,10 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+
+// REDUX
+import { connect } from "react-redux";
+import { login } from "../store/actions/authActions";
+import { fetchDataById } from "../store/actions/dataActions";
 
 // reactstrap components
 import {
@@ -14,6 +20,23 @@ import {
 import Header from "components/Headers/Header.jsx";
 
 class Tables extends React.Component {
+
+  componentDidMount(){
+    this.props.fetchDataById("NODEIGNIOF101");
+  }
+
+  componentDidUpdate(){
+    console.log(this.props);
+    if(this.props.isAuthenticated){
+      if(this.props.user.ignios.length !== 0){
+        this.props.user.ignios.forEach(device => {
+          console.log(device);
+          this.props.fetchDataById(device);
+        });
+      }
+    }
+  }
+
   render() {
     return (
       <>
@@ -25,7 +48,6 @@ class Tables extends React.Component {
               <Row className="mt-2">
                 <Col sm="12">
                   <Card className="card-stats mb-4 mb-xl-0 bg-dark">
-
                     <CardBody>
                       <Row>
                         <div className="col">
@@ -33,11 +55,17 @@ class Tables extends React.Component {
                             tag="h5"
                             className="text-uppercase text-muted mb-0"
                           >
-                            Sensor Reading
+                            Temperature Reading
                           </CardTitle>
-                          <span className="h1 font-weight-bold mb-0 text-success">
-                            0
-                          </span>
+                            {!this.props.data.isLoading && this.props.data ?
+                                <span className="h1 font-weight-bold mb-0 text-success">
+                                  {this.props.data.deviceData[0].sensorData[0].temperature}
+                                </span>
+                              :
+                                <>
+                                  loading...
+                                </>
+                            }
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-success text-white rounded-circle shadow">
@@ -65,7 +93,7 @@ class Tables extends React.Component {
                             tag="h5"
                             className="text-uppercase text-muted mb-0"
                           >
-                            Sensor Reading
+                            CO Reading
                           </CardTitle>
                           <span className="h1 font-weight-bold mb-0 text-success">
                             0
@@ -145,7 +173,7 @@ class Tables extends React.Component {
                             tag="h5"
                             className="text-uppercase text-muted mb-0"
                           >
-                            Sensor Reading
+                            LP Gas Reading
                           </CardTitle>
                           <span className="h1 font-weight-bold mb-0 text-success">
                             0
@@ -178,7 +206,7 @@ class Tables extends React.Component {
                             tag="h5"
                             className="text-uppercase text-muted mb-0"
                           >
-                            Sensor Reading
+                            Particle Density Reading
                           </CardTitle>
                           <span className="h1 font-weight-bold mb-0 text-success">
                             0
@@ -208,4 +236,16 @@ class Tables extends React.Component {
   }
 }
 
-export default Tables;
+const mapStateToProps = (state) => {
+  return (
+    {
+      user: state.auth.user,
+      data: state.auth.data,
+      ignioToken: state.auth.ignioToken,
+      isAuthenticated: state.auth.isAuthenticated,
+      isLoading: state.auth.isLoading
+    }
+  );
+}
+
+export default withRouter(connect(mapStateToProps, { login, fetchDataById })(Tables));
