@@ -46,10 +46,10 @@ class Details extends React.Component {
       //Bring in data
       labels: ["Jan", "Feb", "March"],
       datasets: [
-          {
-              label: "Sales",
-              data: [86, 67, 91],
-          }
+        {
+          label: "Sales",
+          data: [86, 67, 91],
+        }
       ]
     },
   };
@@ -73,14 +73,14 @@ class Details extends React.Component {
     }
     console.log("Load data from the server!");
     // console.log(this.props);
-    
+
     this.props.fetchDataById("NODEIGNIOF101");
   }
-  componentWillReceiveProps(nextProps){
-    if(!nextProps.data.showChart && nextProps.data.deviceIds[0]){
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.data.showChart && nextProps.data.deviceIds[0]) {
       // console.log(nextProps.data.deviceIds[0]);
       // console.log(chartExample1[this.state.chartExample1Data]);
-      
+
       this.props.setActiveDevice(nextProps.data.deviceIds[0]);
       this.props.setActiveDeviceData(createDataSet(nextProps.data.deviceData, nextProps.data.deviceIds[0]));
       console.log(this.props);
@@ -90,9 +90,9 @@ class Details extends React.Component {
       //   console.log(this.state);
       // });
     }
-    
+
   }
-  componentDidUpdate(){
+  componentDidUpdate() {
     console.log(this.props.data["activeDeviceData"]["temperatureDataSet"]);
   }
   render() {
@@ -114,13 +114,13 @@ class Details extends React.Component {
                 <CardBody>
                   {/* Chart */}
                   <div className="chart">
-                    {this.props.data.showChart ? 
+                    {this.props.data.showChart ?
                       <Line
                         data={this.props.data["activeDeviceData"]["co_ppmDataSet"]}
                         options={chartExample1.ppmUnitOptions}
                         getDatasetAtEvent={e => console.log(e)}
                       />
-                      : 
+                      :
                       <h3 className="text-primary">loading...</h3>
                     }
                   </div>
@@ -139,12 +139,12 @@ class Details extends React.Component {
                 <CardBody>
                   {/* Temperature Chart */}
                   <div className="chart">
-                    {this.props.data.showChart ? 
-                        <Line
-                          data={this.props.data["activeDeviceData"]["temperatureDataSet"]}
-                          options={chartExample1.temperatureUnitOptions}
-                          getDatasetAtEvent={e => console.log(e)}
-                        />
+                    {this.props.data.showChart ?
+                      <Line
+                        data={this.props.data["activeDeviceData"]["temperatureDataSet"]}
+                        options={chartExample1.temperatureUnitOptions}
+                        getDatasetAtEvent={e => console.log(e)}
+                      />
                       :
                       <h3 className="text-primary">loading...</h3>
                     }
@@ -167,14 +167,14 @@ class Details extends React.Component {
                 <CardBody>
                   {/* Chart */}
                   <div className="chart">
-                    {this.props.data.showChart ? 
+                    {this.props.data.showChart ?
                       <Line
                         data={this.props.data["activeDeviceData"]["lp_gas_ppmDataSet"]}
                         options={chartExample1.ppmUnitOptions}
                         getDatasetAtEvent={e => console.log(e)}
                       />
                       :
-                      <h3 className="text-primary">loading...</h3> 
+                      <h3 className="text-primary">loading...</h3>
                     }
                   </div>
                 </CardBody>
@@ -185,21 +185,21 @@ class Details extends React.Component {
                 <CardHeader className="bg-transparent">
                   <Row className="align-items-center">
                     <div className="col">
-                      <h2 className="text-white mb-0">Smoke Particles PPM</h2>
+                      <h2 className="text-white mb-0">Smoke Particles Density</h2>
                     </div>
                   </Row>
                 </CardHeader>
                 <CardBody>
                   {/* Chart */}
                   <div className="chart">
-                    {this.props.data.showChart ? 
+                    {this.props.data.showChart ?
                       <Line
                         data={this.props.data["activeDeviceData"]["particle_ppmDataSet"]}
                         options={chartExample1.ppmUnitOptions}
                         getDatasetAtEvent={e => console.log(e)}
                       />
                       :
-                      <h3 className="text-primary">loading...</h3> 
+                      <h3 className="text-primary">loading...</h3>
                     }
                   </div>
                 </CardBody>
