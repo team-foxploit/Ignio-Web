@@ -19,11 +19,7 @@ import {
   Container,
   Row,
   Col,
-  UncontrolledCollapse,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav
+  UncontrolledTooltip
 } from "reactstrap";
 
 // core components
@@ -111,116 +107,116 @@ class Details extends React.Component {
         <Header />
         {/* Page content */}
         <Container className="mt--7 mb-4" fluid>
-          <Navbar
-            className="navbar-horizontal navbar-light bg-gradient-warning mb-4"
-            expand="lg"
-          >
-            <Container>
-              {/* <NavbarBrand href="#pablo" onClick={e => e.preventDefault()}>
-                Default Color
-            </NavbarBrand> */}
-              <button
-                aria-controls="navbar-default"
-                aria-expanded={false}
-                aria-label="Toggle navigation"
-                className="navbar-toggler"
-                data-target="#navbar-default"
-                data-toggle="collapse"
-                id="navbar-default"
-                type="button"
-              >
-                <span className="navbar-toggler-icon" />
-              </button>
-              <UncontrolledCollapse navbar toggler="#navbar-default">
-                <div className="navbar-collapse-header">
-                  <Row>
-                    {/* <Col className="collapse-brand" xs="6">
-                      <Link to="/">
-                        <img
-                          alt="..."
-                          src={require("assets/img/brand/blue.png")}
-                        />
-                      </Link>
-                    </Col> */}
-                    <Col className="collapse-close" xs="6">
-                      <button
-                        aria-controls="navbar-default"
-                        aria-expanded={false}
-                        aria-label="Toggle navigation"
-                        className="navbar-toggler"
-                        data-target="#navbar-default"
-                        data-toggle="collapse"
-                        id="navbar-default"
+          <Row>
+            <div className=" col">
+              <Card className=" shadow">
+                <CardHeader className=" bg-transparent">
+                  <h3 className=" mb-0 float-left">Your Devices</h3>
+                  <Button
+                    className="float-right"
+                    color="default"
+                    href="#pablo"
+                    onClick={e => e.preventDefault()}
+                    size="sm"
+                  >
+                    Sync now
+                    </Button>
+                </CardHeader>
+
+                <CardBody>
+                  <Row className=" icon-examples">
+                    <Col lg="3" md="6">
+                      <Button
+                        className=" btn-icon-clipboard"
+                        id="tooltip982655500"
                         type="button"
                       >
-                        <span />
-                        <span />
+                        <div>
+                          <i className=" ni ni-box-2" />
+                          <span>INDB1S1</span>
+                        </div>
+                      </Button>
+                      <UncontrolledTooltip
+                        delay={0}
+                        trigger="hover focus"
+                        target="tooltip982655500"
+                      >
+                        {this.state.copiedText === "active-40"
+                          ? "Copied"
+                          : "INDB1S1"}
+                      </UncontrolledTooltip>
+                    </Col>
+                    <Col lg="3" md="6">
+                      <button
+                        className=" btn-icon-clipboard"
+                        data-clipboard-text="air-baloon"
+                        id="tooltip47550434"
+                        type="button"
+                      >
+                        <div>
+                          <i className=" ni ni-box-2" />
+                          <span>INDB1S2</span>
+                        </div>
                       </button>
+                      <UncontrolledTooltip
+                        delay={0}
+                        trigger="hover focus"
+                        target="tooltip47550434"
+                      >
+                        {this.state.copiedText === "air-baloon"
+                          ? "Copied"
+                          : "INDB1S2"}
+                      </UncontrolledTooltip>
+                    </Col>
+                    <Col lg="3" md="6">
+                      <button
+                        className=" btn-icon-clipboard"
+                        data-clipboard-text="album-2"
+                        id="tooltip945481346"
+                        type="button"
+                      >
+                        <div>
+                          <i className=" ni ni-box-2" />
+                          <span>INDB1S3</span>
+                        </div>
+                      </button>
+                      <UncontrolledTooltip
+                        delay={0}
+                        trigger="hover focus"
+                        target="tooltip945481346"
+                      >
+                        {this.state.copiedText === "album-2"
+                          ? "Copied"
+                          : "INDB1S3"}
+                      </UncontrolledTooltip>
+                    </Col>
+                    <Col lg="3" md="6">
+                      <button
+                        className=" btn-icon-clipboard"
+                        data-clipboard-text="align-center"
+                        id="tooltip662352101"
+                        type="button"
+                      >
+                        <div>
+                          <i className=" ni ni-box-2" />
+                          <span>INDB1S4</span>
+                        </div>
+                      </button>
+                      <UncontrolledTooltip
+                        delay={0}
+                        trigger="hover focus"
+                        target="tooltip662352101"
+                      >
+                        {this.state.copiedText === "align-center"
+                          ? "Copied"
+                          : "INDB1S4"}
+                      </UncontrolledTooltip>
                     </Col>
                   </Row>
-                </div>
-                <Nav
-                  className="nav-fill flex-column flex-sm-row"
-                  id="tabs-text"
-                  pills
-                  role="tablist"
-                >
-                  <NavItem>
-                    <NavLink
-                      aria-selected={this.state.navPills === 1}
-                      className={classnames("mb-sm-3 mb-md-0", {
-                        active: this.state.navPills === 1
-                      })}
-                      onClick={e => this.toggleNavsPills(e, "navPills", 1)}
-                      href="#pablo"
-                      role="tab"
-                    >
-                      Device 1
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      aria-selected={this.state.navPills === 2}
-                      className={classnames("mb-sm-3 mb-md-0", {
-                        active: this.state.navPills === 2
-                      })}
-                      onClick={e => this.toggleNavsPills(e, "navPills", 2)}
-                      href="#pablo"
-                      role="tab"
-                    >
-                      Device 2
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      aria-selected={this.state.navPills === 3}
-                      className={classnames("mb-sm-3 mb-md-0", {
-                        active: this.state.navPills === 3
-                      })}
-                      onClick={e => this.toggleNavsPills(e, "navPills", 3)}
-                      href="#pablo"
-                      role="tab"
-                    >
-                      Device 3
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      aria-selected={this.state.navPills === 3}
-                      className={classnames("mb-sm-3 mb-md-0", {
-                        active: this.state.navPills === 3
-                      })}
-                      onClick={e => this.toggleNavsPills(e, "navPills", 3)}
-                      href="#pablo"
-                      role="tab"
-                    >
-                      Device 4
-                    </NavLink>
-                  </NavItem>
-                </Nav>
-              </UncontrolledCollapse>
-            </Container>
-          </Navbar>
+                </CardBody>
+              </Card>
+            </div>
+          </Row>
 
           <Row>
             <Col className="mb-6 mb-xl-3" xl="12">
