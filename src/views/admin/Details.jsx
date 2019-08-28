@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // node.js library that concatenates classes (strings)
 import classnames from "classnames";
 import { withRouter } from 'react-router-dom';
@@ -13,14 +14,20 @@ import {
   Card,
   CardHeader,
   CardBody,
-  NavItem,
-  NavLink,
-  Nav,
   Progress,
   Table,
   Container,
   Row,
-  Col
+  Col,
+  UncontrolledCollapse,
+  DropdownMenu,
+  DropdownItem,
+  UncontrolledDropdown,
+  NavbarBrand,
+  Navbar,
+  NavItem,
+  NavLink,
+  Nav
 } from "reactstrap";
 
 // core components
@@ -101,6 +108,76 @@ class Details extends React.Component {
         <Header />
         {/* Page content */}
         <Container className="mt--7 mb-4" fluid>
+          <Navbar
+            className="navbar-horizontal navbar-light bg-gradient-warning mb-4"
+            expand="lg"
+          >
+            <Container>
+              {/* <NavbarBrand href="#pablo" onClick={e => e.preventDefault()}>
+                Default Color
+            </NavbarBrand> */}
+              <button
+                aria-controls="navbar-default"
+                aria-expanded={false}
+                aria-label="Toggle navigation"
+                className="navbar-toggler"
+                data-target="#navbar-default"
+                data-toggle="collapse"
+                id="navbar-default"
+                type="button"
+              >
+                <span className="navbar-toggler-icon" />
+              </button>
+              <UncontrolledCollapse navbar toggler="#navbar-default">
+                <div className="navbar-collapse-header">
+                  <Row>
+                    {/* <Col className="collapse-brand" xs="6">
+                      <Link to="/">
+                        <img
+                          alt="..."
+                          src={require("assets/img/brand/blue.png")}
+                        />
+                      </Link>
+                    </Col> */}
+                    <Col className="collapse-close" xs="6">
+                      <button
+                        aria-controls="navbar-default"
+                        aria-expanded={false}
+                        aria-label="Toggle navigation"
+                        className="navbar-toggler"
+                        data-target="#navbar-default"
+                        data-toggle="collapse"
+                        id="navbar-default"
+                        type="button"
+                      >
+                        <span />
+                        <span />
+                      </button>
+                    </Col>
+                  </Row>
+                </div>
+                <Nav pills className="">
+                  <NavItem>
+                    <label>Select your device to see sensor data</label>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="#" active>Device 1</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="#">Device 2</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="#">Device 3</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="#">Device 4</NavLink>
+                  </NavItem>
+                </Nav>
+              </UncontrolledCollapse>
+            </Container>
+          </Navbar>
+
+
           <Row>
             <Col className="mb-6 mb-xl-3" xl="12">
               <Card className="bg-gradient-default shadow">
