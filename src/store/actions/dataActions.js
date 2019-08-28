@@ -42,7 +42,6 @@ export const fetchDataById = deviceId => (dispatch, getState) => {
 
 // SET Active Device
 export const setActiveDevice = deviceId => dispatch => {
-  console.log("dsvgds");
   dispatch({
     type: actionTypes.SET_ACTIVE_DEVICE,
     payload: deviceId
