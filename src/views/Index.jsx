@@ -25,7 +25,6 @@ class Tables extends React.Component {
               <Row className="mt-2">
                 <Col sm="12">
                   <Card className="card-stats mb-4 mb-xl-0 bg-dark">
-
                     <CardBody>
                       <Row>
                         <div className="col">
