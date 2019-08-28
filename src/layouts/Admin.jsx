@@ -16,6 +16,7 @@ import routes from "routes.js";
 class Admin extends React.Component {
 
   componentDidMount(){
+    // console.log(this.props);
     // if(!this.props.ignioToken){
     //   this.props.login({
     //     "username": "luke2",
@@ -59,6 +60,15 @@ class Admin extends React.Component {
     return "Brand";
   };
   render() {
+    // if(this.props.isLoading){
+    //   return (
+    //     <h1>Loading...</h1>
+    //   );
+    // }else if(!this.props.isLoading && !this.props.isAuthenticated){
+    //   return (
+    //     <Redirect from="/admin/index" to="/auth/login"/>
+    //   );
+    // }
     return (
       <>
         <Sidebar
