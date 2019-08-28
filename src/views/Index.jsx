@@ -25,13 +25,13 @@ class Tables extends React.Component {
     this.props.fetchDataById("NODEIGNIOF101");
   }
 
-  componentDidUpdate(){
-    console.log(this.props);
-    if(this.props.isAuthenticated){
-      if(this.props.user.ignios.length !== 0){
-        this.props.user.ignios.forEach(device => {
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps);
+    if(nextProps.isAuthenticated){
+      if(nextProps.user.ignios.length !== 0){
+        nextProps.user.ignios.forEach(device => {
           console.log(device);
-          this.props.fetchDataById(device);
+          nextProps.fetchDataById(device);
         });
       }
     }
@@ -57,9 +57,9 @@ class Tables extends React.Component {
                           >
                             Temperature Reading
                           </CardTitle>
-                            {!this.props.data.isLoading && this.props.data ?
+                            {!this.props.data.isLoading && this.props.data.deviceData[0] ?
                                 <span className="h1 font-weight-bold mb-0 text-success">
-                                  {this.props.data.deviceData[0].sensorData[0].temperature}
+                                  {this.props.data.deviceData[0].sensorData[this.props.data.deviceData[0].sensorData.length-1].temperature}
                                 </span>
                               :
                                 <>
@@ -77,7 +77,7 @@ class Tables extends React.Component {
                         {/* <span className="text-success mr-2">
                         <i className="fa fa-arrow-up" /> 0%
                         </span>{" "} */}
-                        <span className="text-nowrap">ppm</span>
+                        <span className="text-nowrap">'C</span>
                       </p>
                     </CardBody>
                   </Card>
@@ -95,9 +95,15 @@ class Tables extends React.Component {
                           >
                             CO Reading
                           </CardTitle>
-                          <span className="h1 font-weight-bold mb-0 text-success">
-                            0
-                          </span>
+                          {!this.props.data.isLoading && this.props.data.deviceData[0] ?
+                            <span className="h1 font-weight-bold mb-0 text-success">
+                              {this.props.data.deviceData[0].sensorData[this.props.data.deviceData[0].sensorData.length-1].co_ppm}
+                            </span>
+                          :
+                            <>
+                              loading...
+                            </>
+                          }
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-success text-white rounded-circle shadow">
@@ -175,9 +181,15 @@ class Tables extends React.Component {
                           >
                             LP Gas Reading
                           </CardTitle>
-                          <span className="h1 font-weight-bold mb-0 text-success">
-                            0
-                          </span>
+                          {!this.props.data.isLoading && this.props.data.deviceData[0] ?
+                            <span className="h1 font-weight-bold mb-0 text-success">
+                              {this.props.data.deviceData[0].sensorData[this.props.data.deviceData[0].sensorData.length-1].lp_gas_ppm}
+                            </span>
+                          :
+                            <>
+                              loading...
+                            </>
+                          }
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-success text-white rounded-circle shadow">
@@ -208,9 +220,15 @@ class Tables extends React.Component {
                           >
                             Particle Density Reading
                           </CardTitle>
-                          <span className="h1 font-weight-bold mb-0 text-success">
-                            0
-                          </span>
+                          {!this.props.data.isLoading && this.props.data.deviceData[0] ?
+                            <span className="h1 font-weight-bold mb-0 text-success">
+                              {this.props.data.deviceData[0].sensorData[this.props.data.deviceData[0].sensorData.length-1].particle_ppm}
+                            </span>
+                          :
+                            <>
+                              loading...
+                            </>
+                          }
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-success text-white rounded-circle shadow">
@@ -240,7 +258,7 @@ const mapStateToProps = (state) => {
   return (
     {
       user: state.auth.user,
-      data: state.auth.data,
+      data: state.data,
       ignioToken: state.auth.ignioToken,
       isAuthenticated: state.auth.isAuthenticated,
       isLoading: state.auth.isLoading
