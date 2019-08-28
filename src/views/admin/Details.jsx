@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // node.js library that concatenates classes (strings)
 import classnames from "classnames";
 import { withRouter } from 'react-router-dom';
@@ -20,10 +20,6 @@ import {
   Row,
   Col,
   UncontrolledCollapse,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  NavbarBrand,
   Navbar,
   NavItem,
   NavLink,
@@ -46,6 +42,7 @@ import { connect } from "react-redux";
 class Details extends React.Component {
   state = {
     activeNav: 1,
+    navPills: 1,
     chartExample1Data: "data1",
     activeDeviceId: "",
     dataSet: {},
@@ -59,6 +56,12 @@ class Details extends React.Component {
         }
       ]
     },
+  };
+  toggleNavsPills = (e, state, index) => {
+    e.preventDefault();
+    this.setState({
+      [state]: index
+    });
   };
   toggleNavs = (e, index) => {
     e.preventDefault();
@@ -97,11 +100,11 @@ class Details extends React.Component {
       //   console.log(this.state);
       // });
     }
-
   }
   componentDidUpdate() {
     console.log(this.props.data["activeDeviceData"]["temperatureDataSet"]);
   }
+
   render() {
     return (
       <>
@@ -156,27 +159,68 @@ class Details extends React.Component {
                     </Col>
                   </Row>
                 </div>
-                <Nav pills className="">
+                <Nav
+                  className="nav-fill flex-column flex-sm-row"
+                  id="tabs-text"
+                  pills
+                  role="tablist"
+                >
                   <NavItem>
-                    <label>Select your device to see sensor data</label>
+                    <NavLink
+                      aria-selected={this.state.navPills === 1}
+                      className={classnames("mb-sm-3 mb-md-0", {
+                        active: this.state.navPills === 1
+                      })}
+                      onClick={e => this.toggleNavsPills(e, "navPills", 1)}
+                      href="#pablo"
+                      role="tab"
+                    >
+                      Device 1
+                    </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="#" active>Device 1</NavLink>
+                    <NavLink
+                      aria-selected={this.state.navPills === 2}
+                      className={classnames("mb-sm-3 mb-md-0", {
+                        active: this.state.navPills === 2
+                      })}
+                      onClick={e => this.toggleNavsPills(e, "navPills", 2)}
+                      href="#pablo"
+                      role="tab"
+                    >
+                      Device 2
+                    </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="#">Device 2</NavLink>
+                    <NavLink
+                      aria-selected={this.state.navPills === 3}
+                      className={classnames("mb-sm-3 mb-md-0", {
+                        active: this.state.navPills === 3
+                      })}
+                      onClick={e => this.toggleNavsPills(e, "navPills", 3)}
+                      href="#pablo"
+                      role="tab"
+                    >
+                      Device 3
+                    </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="#">Device 3</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href="#">Device 4</NavLink>
+                    <NavLink
+                      aria-selected={this.state.navPills === 3}
+                      className={classnames("mb-sm-3 mb-md-0", {
+                        active: this.state.navPills === 3
+                      })}
+                      onClick={e => this.toggleNavsPills(e, "navPills", 3)}
+                      href="#pablo"
+                      role="tab"
+                    >
+                      Device 4
+                    </NavLink>
                   </NavItem>
                 </Nav>
               </UncontrolledCollapse>
             </Container>
           </Navbar>
-
 
           <Row>
             <Col className="mb-6 mb-xl-3" xl="12">
@@ -191,15 +235,17 @@ class Details extends React.Component {
                 <CardBody>
                   {/* Chart */}
                   <div className="chart">
-                    {this.props.data.showChart ?
+                    {this.props.data.showChart ? (
                       <Line
-                        data={this.props.data["activeDeviceData"]["co_ppmDataSet"]}
+                        data={
+                          this.props.data["activeDeviceData"]["co_ppmDataSet"]
+                        }
                         options={chartExample1.ppmUnitOptions}
                         getDatasetAtEvent={e => console.log(e)}
                       />
-                      :
-                      <h3 className="text-primary">loading...</h3>
-                    }
+                    ) : (
+                        <h3 className="text-primary">loading...</h3>
+                      )}
                   </div>
                 </CardBody>
               </Card>
@@ -216,15 +262,19 @@ class Details extends React.Component {
                 <CardBody>
                   {/* Temperature Chart */}
                   <div className="chart">
-                    {this.props.data.showChart ?
+                    {this.props.data.showChart ? (
                       <Line
-                        data={this.props.data["activeDeviceData"]["temperatureDataSet"]}
+                        data={
+                          this.props.data["activeDeviceData"][
+                          "temperatureDataSet"
+                          ]
+                        }
                         options={chartExample1.temperatureUnitOptions}
                         getDatasetAtEvent={e => console.log(e)}
                       />
-                      :
-                      <h3 className="text-primary">loading...</h3>
-                    }
+                    ) : (
+                        <h3 className="text-primary">loading...</h3>
+                      )}
                   </div>
                 </CardBody>
               </Card>
@@ -244,15 +294,19 @@ class Details extends React.Component {
                 <CardBody>
                   {/* Chart */}
                   <div className="chart">
-                    {this.props.data.showChart ?
+                    {this.props.data.showChart ? (
                       <Line
-                        data={this.props.data["activeDeviceData"]["lp_gas_ppmDataSet"]}
+                        data={
+                          this.props.data["activeDeviceData"][
+                          "lp_gas_ppmDataSet"
+                          ]
+                        }
                         options={chartExample1.ppmUnitOptions}
                         getDatasetAtEvent={e => console.log(e)}
                       />
-                      :
-                      <h3 className="text-primary">loading...</h3>
-                    }
+                    ) : (
+                        <h3 className="text-primary">loading...</h3>
+                      )}
                   </div>
                 </CardBody>
               </Card>
@@ -262,22 +316,28 @@ class Details extends React.Component {
                 <CardHeader className="bg-transparent">
                   <Row className="align-items-center">
                     <div className="col">
-                      <h2 className="text-white mb-0">Smoke Particles Density</h2>
+                      <h2 className="text-white mb-0">
+                        Smoke Particles Density
+                      </h2>
                     </div>
                   </Row>
                 </CardHeader>
                 <CardBody>
                   {/* Chart */}
                   <div className="chart">
-                    {this.props.data.showChart ?
+                    {this.props.data.showChart ? (
                       <Line
-                        data={this.props.data["activeDeviceData"]["particle_ppmDataSet"]}
+                        data={
+                          this.props.data["activeDeviceData"][
+                          "particle_ppmDataSet"
+                          ]
+                        }
                         options={chartExample1.ppmUnitOptions}
                         getDatasetAtEvent={e => console.log(e)}
                       />
-                      :
-                      <h3 className="text-primary">loading...</h3>
-                    }
+                    ) : (
+                        <h3 className="text-primary">loading...</h3>
+                      )}
                   </div>
                 </CardBody>
               </Card>
