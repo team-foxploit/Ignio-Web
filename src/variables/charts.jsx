@@ -287,7 +287,44 @@ function parseOptions(parent, options) {
 
 // 1 of Chart inside src/views/Index.jsx (Flamable Gas Emissions - Card)
 let chartExample1 = {
-  options: {
+  temperatureUnitOptions: {
+    scales: {
+      yAxes: [
+        {
+          gridLines: {
+            color: colors.gray[900],
+            zeroLineColor: colors.gray[900]
+          },
+          ticks: {
+            callback: function(value) {
+              if (!(value % 10)) {
+                return value + " 'C";
+              }
+            }
+          }
+        }
+      ]
+    },
+    tooltips: {
+      callbacks: {
+        label: function(item, data) {
+          // console.log(item, data);
+          
+          var label = data.datasets[item.datasetIndex].label || "";
+          var yLabel = item.yLabel;
+          var content = "";
+
+          if (data.datasets.length > 1) {
+            content += label;
+          }
+
+          content += yLabel + " 'C";
+          return content;
+        }
+      }
+    }
+  },
+  ppmUnitOptions: {
     scales: {
       yAxes: [
         {
@@ -308,7 +345,7 @@ let chartExample1 = {
     tooltips: {
       callbacks: {
         label: function(item, data) {
-          console.log(item, data);
+          // console.log(item, data);
           
           var label = data.datasets[item.datasetIndex].label || "";
           var yLabel = item.yLabel;

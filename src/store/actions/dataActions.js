@@ -17,7 +17,7 @@ export const fetchDataById = deviceId => (dispatch, getState) => {
       });
     })
     .catch(error => {
-      console.log();
+      console.log(error);
       var errors;
       if(error.response){
         errors = {
@@ -39,6 +39,24 @@ export const fetchDataById = deviceId => (dispatch, getState) => {
       });
     });
 };
+
+// SET Active Device
+export const setActiveDevice = deviceId => dispatch => {
+  console.log("dsvgds");
+  dispatch({
+    type: actionTypes.SET_ACTIVE_DEVICE,
+    payload: deviceId
+  });
+};
+
+// SET Active Device Data
+export const setActiveDeviceData = data => dispatch => {
+  dispatch({
+    type: actionTypes.SET_ACTIVE_DEVICE_DATA,
+    payload: data
+  });
+};
+
 
 // TODO: LOGOUT USER
 /*

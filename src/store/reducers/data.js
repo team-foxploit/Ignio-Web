@@ -4,6 +4,9 @@ const initialState = {
     deviceIds: [
     ],
     deviceData: [],
+    activeDevice: "",
+    activeDeviceData: {},
+    showChart: false,
     isLoading: false
 }
 
@@ -26,6 +29,19 @@ export default function (state=initialState, action) {
                 ...state,
                 isLoading: false,
                 deviceData: {},
+            };
+        case actionTypes.SET_ACTIVE_DEVICE:
+                return {
+                    ...state,
+                    activeDevice: action.payload,
+                    showChart: false,
+                };
+        case actionTypes.SET_ACTIVE_DEVICE_DATA:
+            console.log(action.payload);
+            return {
+                ...state,
+                activeDeviceData: action.payload,
+                showChart: true,
             };
         default:
             return state;
