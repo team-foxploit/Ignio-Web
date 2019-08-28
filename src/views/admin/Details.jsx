@@ -1,10 +1,12 @@
 import React from "react";
 // node.js library that concatenates classes (strings)
 import classnames from "classnames";
+import { withRouter } from 'react-router-dom';
 // javascipt plugin for creating charts
 import Chart from "chart.js";
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
+// import { Line, Bar } from "react-chartjs-2";
 // reactstrap components
 import {
   Button,
@@ -25,11 +27,13 @@ import {
 import {
   chartOptions,
   parseOptions,
-  chartExample1,
-  chartExample2
+  chartExample1
 } from "variables/charts.jsx";
 
 import Header from "components/Headers/Header.jsx";
+// REDUX
+import { fetchDataById } from "../../store/actions/dataActions";
+import { connect } from "react-redux";
 
 class Details extends React.Component {
   state = {
@@ -54,6 +58,10 @@ class Details extends React.Component {
     if (window.Chart) {
       parseOptions(Chart, chartOptions());
     }
+    console.log("Load data from the server!");
+    // console.log(this.props);
+    
+    this.props.fetchDataById("NODEIGNIOF101");
   }
   render() {
     return (
@@ -107,7 +115,7 @@ class Details extends React.Component {
                   {/* Chart */}
                   <div className="chart">
                     <Line
-                      data={chartExample1[this.state.chartExample1Data]}
+                      data={chartExample1["data1"]}
                       options={chartExample1.options}
                       getDatasetAtEvent={e => console.log(e)}
                     />
@@ -432,4 +440,15 @@ class Details extends React.Component {
   }
 }
 
-export default Details;
+// const mapStateToProps = (state, ownProps) => {
+//   console.log(state, ownProps);
+//   return {
+//     // id: ownProps.params.id,
+//     // filter: ownProps.location.query.filter,
+//     path: ownProps.path,
+//     component: ownProps.component,
+//     key: ownProps.key
+//   };
+// }
+
+export default withRouter(connect(null, { fetchDataById })(Details));

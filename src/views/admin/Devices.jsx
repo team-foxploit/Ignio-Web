@@ -32,11 +32,11 @@ class Icons extends React.Component {
         <Header />
         {/* Page content */}
         <Container className=" mt--7 mb-8" fluid>
-          <Row>
+          <Row className="mb-4">
             <div className="col">
               <Card className="shadow">
                 <CardHeader className="border-0">
-                  <h3 className="mb-0">Device Usage Activity</h3>
+                  <h3 className="mb-0">Device Activity</h3>
                 </CardHeader>
                 <Table className="align-items-center table-flush" responsive>
                   <thead className="thead-light">
