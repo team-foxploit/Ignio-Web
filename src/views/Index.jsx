@@ -25,17 +25,17 @@ class Tables extends React.Component {
     this.props.fetchDataById("NODEIGNIOF101");
   }
 
-  componentWillReceiveProps(nextProps){
-    console.log(nextProps);
-    if(nextProps.isAuthenticated){
-      if(nextProps.user.ignios.length !== 0){
-        nextProps.user.ignios.forEach(device => {
-          console.log(device);
-          nextProps.fetchDataById(device);
-        });
-      }
-    }
-  }
+  // componentWillReceiveProps(nextProps){
+  //   console.log(nextProps);
+  //   if(nextProps.isAuthenticated && (nextProps.data.deviceData.length === 0)){
+  //     if(nextProps.user.ignios.length !== 0){
+  //       nextProps.user.ignios.forEach(device => {
+  //         console.log(device);
+  //         nextProps.fetchDataById(device);
+  //       });
+  //     }
+  //   }
+  // }
 
   render() {
     return (
