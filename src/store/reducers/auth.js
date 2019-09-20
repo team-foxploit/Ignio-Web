@@ -29,12 +29,11 @@ export default function (state=initialState, action) {
                 isAuthenticated: true
             };
         case actionTypes.AUTH_SUCCESS:
-            localStorage.setItem('ignioToken', action.payload.token);
+            console.log(action.payload);
+            localStorage.setItem('ignioToken', action.payload.id_token);
             return {
                 ...state,
-                user: action.payload,
-                ignioToken: action.payload.token,
-                isAuthenticated: true,
+                ignioToken: action.payload.id_token,
                 isLoading: false
             };
         case actionTypes.USER_LOGOUT:

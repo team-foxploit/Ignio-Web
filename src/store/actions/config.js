@@ -4,7 +4,7 @@
 export const headerConfig = (getState) => {
 
     // Get the token from the state
-    const token = getState().auth.foxToken;
+    const token = getState().auth.ignioToken;
 
     // Headers
     const config = {
@@ -15,7 +15,7 @@ export const headerConfig = (getState) => {
 
      // If token exist, add it to the header,
     if (token) {
-        config.headers['Authorization'] = `Token ${token}`;
+        config.headers['Authorization'] = `Bearer ${token}`;
     }
 
     return config;

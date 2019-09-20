@@ -2,6 +2,7 @@ import axios from "axios";
 
 import * as actionTypes from "./actionTypes";
 import { resolveDataUpdate } from "./helpers";
+import { headerConfig } from "./config";
 
 // LOAD Device Data By Id
 export const fetchDataById = deviceId => (dispatch, getState) => {
@@ -9,7 +10,7 @@ export const fetchDataById = deviceId => (dispatch, getState) => {
     type: actionTypes.DEVICE_DATA_FETCH_START
   });
   axios
-    .get("http://localhost:8082/api/device/data/all/" + deviceId)
+    .get("http://localhost:8080/services/devicedataservice/api/sensor-data/all/" + deviceId, headerConfig(getState))
     .then(res => {
       dispatch({
         type: actionTypes.DEVICE_DATA_FETCH_SUCCESS,

@@ -21,10 +21,6 @@ import Header from "components/Headers/Header.jsx";
 
 class Tables extends React.Component {
 
-  componentDidMount(){
-    this.props.fetchDataById("NODEIGNIOF101");
-  }
-
   // componentWillReceiveProps(nextProps){
   //   console.log(nextProps);
   //   if(nextProps.isAuthenticated && (nextProps.data.deviceData.length === 0)){
@@ -57,15 +53,15 @@ class Tables extends React.Component {
                           >
                             Temperature Reading
                           </CardTitle>
-                            {!this.props.data.isLoading && this.props.data.deviceData[0] ?
+                            {/* {this.props.data.activeDeviceData ?
                                 <span className="h1 font-weight-bold mb-0 text-success">
-                                  {this.props.data.deviceData[0].sensorData[this.props.data.deviceData[0].sensorData.length-1].temperature}
+                                  {this.props.data.deviceData[0][this.props.data.deviceData[0].length-1].temperature}
                                 </span>
                               :
                                 <>
                                   loading...
                                 </>
-                            }
+                            } */}
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-success text-white rounded-circle shadow">
@@ -95,7 +91,7 @@ class Tables extends React.Component {
                           >
                             CO Reading
                           </CardTitle>
-                          {!this.props.data.isLoading && this.props.data.deviceData[0] ?
+                          {/* {!this.props.data.isLoading && this.props.data.deviceData[0] ?
                             <span className="h1 font-weight-bold mb-0 text-success">
                               {this.props.data.deviceData[0].sensorData[this.props.data.deviceData[0].sensorData.length-1].co_ppm}
                             </span>
@@ -103,7 +99,7 @@ class Tables extends React.Component {
                             <>
                               loading...
                             </>
-                          }
+                          } */}
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-success text-white rounded-circle shadow">
@@ -181,7 +177,7 @@ class Tables extends React.Component {
                           >
                             LP Gas Reading
                           </CardTitle>
-                          {!this.props.data.isLoading && this.props.data.deviceData[0] ?
+                          {/* {!this.props.data.isLoading && this.props.data.deviceData[0] ?
                             <span className="h1 font-weight-bold mb-0 text-success">
                               {this.props.data.deviceData[0].sensorData[this.props.data.deviceData[0].sensorData.length-1].lp_gas_ppm}
                             </span>
@@ -189,7 +185,7 @@ class Tables extends React.Component {
                             <>
                               loading...
                             </>
-                          }
+                          } */}
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-success text-white rounded-circle shadow">
@@ -220,7 +216,7 @@ class Tables extends React.Component {
                           >
                             Particle Density Reading
                           </CardTitle>
-                          {!this.props.data.isLoading && this.props.data.deviceData[0] ?
+                          {/* {!this.props.data.isLoading && this.props.data.deviceData[0] ?
                             <span className="h1 font-weight-bold mb-0 text-success">
                               {this.props.data.deviceData[0].sensorData[this.props.data.deviceData[0].sensorData.length-1].particle_ppm}
                             </span>
@@ -228,7 +224,7 @@ class Tables extends React.Component {
                             <>
                               loading...
                             </>
-                          }
+                          } */}
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-success text-white rounded-circle shadow">

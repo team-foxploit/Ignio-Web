@@ -9,15 +9,15 @@ export const resolveDataUpdate = (getState, data) => {
     var deviceIds = getState().data.deviceIds;
     var deviceData = getState().data.deviceData;
 
-    if (deviceIds.includes(data.deviceId)) {
-        const deviceIndex = deviceIds.indexOf(data.deviceId);
+    if (deviceIds.includes(data[0].deviceId)) {
+        const deviceIndex = deviceIds.indexOf(data[0].deviceId);
         console.log("[resolveDataUpdate] Execute UPDATE!");
         deviceData[deviceIndex] = data;
     } else {
         console.log("[resolveDataUpdate] Execute, APPEND!");
         deviceIds = [
             ...deviceIds,
-            data.deviceId
+            data[0].deviceId
         ];
         deviceData = [
             ...deviceData,
