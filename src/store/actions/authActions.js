@@ -33,39 +33,15 @@ export const login = user => dispatch => {
     });
 };
 
-// TODO : LOGOUT USER
-/*
-export const logout = () => (dispatch, getState) => {
+// LOGOUT USER
+export const logout = () => (dispatch) => {
   dispatch({
     type: actionTypes.AUTH_START
   });
-  axios
-    .post(
-      "http://localhost:8000/api/auth/logout/",
-      null,
-      headerConfig(getState)
-    )
-    .then(res => {
-      dispatch({
-        type: actionTypes.USER_LOGOUT
-      });
-    })
-    .catch(error => {
-      console.log(error);
-      const errors = {
-        msg: error.response.data,
-        status: error.response.status
-      };
-      dispatch({
-        type: actionTypes.AUTH_FAIL
-      });
-      dispatch({
-        type: actionTypes.SHOW_ERROR,
-        payload: errors
-      });
-    });
+  dispatch({
+    type: actionTypes.USER_LOGOUT
+  });
 };
-*/
 
 // REGISTER USER
 export const register = user => dispatch => {

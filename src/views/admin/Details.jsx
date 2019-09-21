@@ -1,7 +1,7 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 // node.js library that concatenates classes (strings)
-import classnames from "classnames";
+// import classnames from "classnames";
 import { withRouter } from 'react-router-dom';
 // javascipt plugin for creating charts
 import Chart from "chart.js";

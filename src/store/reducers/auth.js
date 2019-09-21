@@ -37,14 +37,6 @@ export default function (state=initialState, action) {
                 isLoading: false
             };
         case actionTypes.USER_LOGOUT:
-            localStorage.removeItem('ignioToken');
-            return {
-                ...state,
-                isLoading: false,
-                isAuthenticated: false,
-                user: null,
-                ignioToken: null
-            };
         case actionTypes.AUTH_FAIL:
             localStorage.removeItem('ignioToken');
             return {
