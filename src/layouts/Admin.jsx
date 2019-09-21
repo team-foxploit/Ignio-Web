@@ -16,7 +16,6 @@ import routes from "routes.js";
 class Admin extends React.Component {
 
   componentWillMount(){
-    console.log(this.props);
     if(!this.props.isAuthenticated && this.props.ignioToken){
       this.props.getUser();
     }

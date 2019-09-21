@@ -38,16 +38,6 @@ class Auth extends React.Component {
       return (
         <Redirect from="/auth/" to="/admin/index"/>
       );
-    }else if(this.props.isLoading){
-      return (
-        <div className="container">
-          <div className="row ml-2">
-            <div className="col mt-3">
-              <h1>Loading...</h1>
-            </div>
-          </div>
-        </div>
-      );
     }else{
       return (
         <>
@@ -99,8 +89,7 @@ class Auth extends React.Component {
 const mapStateToProps = (state) => {
   return (
     {
-      ignioToken: state.auth.ignioToken,
-      isLoading: state.auth.isLoading
+      ignioToken: state.auth.ignioToken
     }
   );
 }

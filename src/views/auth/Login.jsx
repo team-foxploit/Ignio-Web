@@ -1,10 +1,6 @@
 import React from "react";
 import { Redirect, withRouter } from "react-router-dom";
 
-// REDUX
-import { login, getUser } from "../../store/actions/authActions";
-import { connect } from "react-redux";
-
 // reactstrap components
 import {
   Button,
@@ -20,6 +16,10 @@ import {
   Row,
   Col
 } from "reactstrap";
+
+// REDUX
+import { login, getUser } from "../../store/actions/authActions";
+import { connect } from "react-redux";
 
 class Login extends React.Component {
 
@@ -65,6 +65,16 @@ class Login extends React.Component {
       return (
         <Redirect to="/admin/index" />
       );
+    }else if(this.props.isLoading){
+      return (
+        <div className="container">
+          <div className="row ml-2">
+            <div className="col mt-3">
+              <h1>Loading...</h1>
+            </div>
+          </div>
+        </div>
+      );
     }
     return (
       <>
@@ -83,7 +93,7 @@ class Login extends React.Component {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input 
-                      placeholder="Email"
+                      placeholder="Username"
                       type="text"
                       id="username"
                       value={this.state.username}
@@ -160,7 +170,8 @@ const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
     isAuthenticated: state.auth.isAuthenticated,
-    ignioToken: state.auth.ignioToken
+    ignioToken: state.auth.ignioToken,
+    isLoading: state.auth.isLoading
   }
 }
 
