@@ -53,9 +53,9 @@ class Auth extends React.Component {
         <>
           <div className="main-content">
             <AuthNavbar />
-            <div className="header bg-gradient-warning py-1 py-lg-8">
+            <div className="header bg-gradient-warning pb-8 pt-5">
               <Container>
-                <div className="header-body text-center mb-5">
+                <div className="header-body text-center mb-4">
                   <Row className="justify-content-center">
                     <Col lg="5" md="6">
                       <h1 className="text-white">Welcome!</h1>
