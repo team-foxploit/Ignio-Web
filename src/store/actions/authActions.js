@@ -11,7 +11,6 @@ export const login = user => dispatch => {
   axios
     .post("http://localhost:8080/api/authenticate", user)
     .then(res => {
-      console.log(res);
       dispatch({
         type: actionTypes.AUTH_SUCCESS,
         payload: res.data

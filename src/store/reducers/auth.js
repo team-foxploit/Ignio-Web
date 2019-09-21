@@ -30,7 +30,6 @@ export default function (state=initialState, action) {
                 isAuthenticated: true
             };
         case actionTypes.AUTH_SUCCESS:
-            console.log(action.payload);
             if(action.payload.id_token){
                 localStorage.setItem('ignioToken', action.payload.id_token);
                 return {

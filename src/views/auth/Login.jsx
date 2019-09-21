@@ -50,7 +50,6 @@ class Login extends React.Component {
       password: this.state.password,
       rememberMe: this.state.rememberMe
     }
-    console.log(this.state);
     this.props.login(user);
   }
 

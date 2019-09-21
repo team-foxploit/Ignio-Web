@@ -19,7 +19,7 @@ import {
 // core components
 import Header from "components/Headers/Header.jsx";
 
-class Tables extends React.Component {
+class Index extends React.Component {
 
   // componentWillReceiveProps(nextProps){
   //   console.log(nextProps);
@@ -262,4 +262,4 @@ const mapStateToProps = (state) => {
   );
 }
 
-export default withRouter(connect(mapStateToProps, { login, fetchDataById })(Tables));
+export default withRouter(connect(mapStateToProps, { login, fetchDataById })(Index));
