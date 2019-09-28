@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 
 import store from './store/store';
 
+import "react-notification-alert/dist/animate.css";
 import "assets/vendor/nucleo/css/nucleo.css";
 import "assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
 // import "assets/scss/argon-dashboard-react.scss";

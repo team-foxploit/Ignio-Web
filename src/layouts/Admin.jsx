@@ -10,6 +10,7 @@ import { fetchDataById } from '../store/actions/dataActions';
 import AdminNavbar from "components/Navbars/AdminNavbar.jsx";
 import AdminFooter from "components/Footers/AdminFooter.jsx";
 import Sidebar from "components/Sidebar/Sidebar.jsx";
+import AlertComponent from "components/Alert/AlertComponent.js";
 
 import routes from "routes.js";
 
@@ -94,6 +95,7 @@ class Admin extends React.Component {
             {this.getRoutes(routes)}
             <Redirect from="/" to="/admin/index" />
           </Switch>
+          <AlertComponent />
           <Container fluid className="bg-gradient-info">
             <AdminFooter />
           </Container>
