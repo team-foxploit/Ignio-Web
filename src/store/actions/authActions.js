@@ -38,6 +38,12 @@ export const logout = () => (dispatch) => {
     type: actionTypes.AUTH_START
   });
   dispatch({
+    type: actionTypes.CLEAR_ERROR
+  });
+  dispatch({
+    type: actionTypes.CLEAR_MESSAGE
+  });
+  dispatch({
     type: actionTypes.USER_LOGOUT
   });
 };
@@ -53,6 +59,13 @@ export const register = user => dispatch => {
       dispatch({
         type: actionTypes.AUTH_SUCCESS,
         payload: res.data
+      });
+      const message = {
+        message: "Registration Successful! Wait for an email to get further instructions."
+      }
+      dispatch({
+        type: actionTypes.SHOW_MESSAGE,
+        payload: message
       });
     })
     .catch(error => {
@@ -81,6 +94,12 @@ export const getUser = () => (dispatch, getState) => {
       dispatch({
         type: actionTypes.USER_LOADED,
         payload: res.data
+      });
+      dispatch({
+        type: actionTypes.SHOW_MESSAGE,
+        payload: {
+          message: "Welcome to Ignio!"
+        }
       });
     })
     .catch(error => {

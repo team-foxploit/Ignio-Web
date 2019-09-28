@@ -10,7 +10,12 @@ export default function(state=initialState, action){
             return {
                 ...state,
                 message: action.payload
-            }    
+            }
+        case actionTypes.CLEAR_MESSAGE:
+            return {
+                ...state,
+                message: {}
+            }
         default:
             return state;
     }

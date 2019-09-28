@@ -1,6 +1,9 @@
 export const SHOW_ERROR = "SHOW_ERROR";
+export const CLEAR_ERROR = "CLEAR_ERROR";
+
 
 export const SHOW_MESSAGE = "SHOW_MESSAGE";
+export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 
 export const AUTH_START = "AUTH_START";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";

@@ -21,25 +21,13 @@ import Header from "components/Headers/Header.jsx";
 
 class Index extends React.Component {
 
-  // componentWillReceiveProps(nextProps){
-  //   console.log(nextProps);
-  //   if(nextProps.isAuthenticated && (nextProps.data.deviceData.length === 0)){
-  //     if(nextProps.user.ignios.length !== 0){
-  //       nextProps.user.ignios.forEach(device => {
-  //         console.log(device);
-  //         nextProps.fetchDataById(device);
-  //       });
-  //     }
-  //   }
-  // }
-
   render() {
     return (
       <>
         <Header />
         {/* Page content */}
         <Container className="mt--7 mb-4" fluid>
-          <Row>
+          <Row className="mt-5">
             <Col sm="12" lg="3">
               <Row className="mt-2">
                 <Col sm="12">

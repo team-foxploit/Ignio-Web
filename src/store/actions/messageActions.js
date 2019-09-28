@@ -1,9 +1,11 @@
 import * as actionTypes from './actionTypes';
 
 // Create message
-export const createMessage = (msg) => {
+export const displayMessage = (msg) => {
     return {
         type: actionTypes.SHOW_MESSAGE,
-        payload: msg
+        payload: {
+            message: msg
+        }
     }
 }

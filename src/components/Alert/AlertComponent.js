@@ -1,38 +1,38 @@
 import React, { Component } from 'react';
 import NotificationAlert from 'react-notification-alert';
-
 // REDUX
 import { connect } from "react-redux";
 
-var options = (message) => {
-    return {
-        place: 'tr',
-        message: ` ${message}!`
-        ,
-        type: "warning",
-        icon: "ni ni-like-2",
-        autoDismiss: 7
-    }
-};
+import { withOptions } from './withOptions';
 
 class AlertComponent extends Component {
-    myFunc(){
-        console.log(this.refs);
-        console.log(options());
-        
-        this.refs.notify.notificationAlert(options("wow"));
-    }
-  render() {
-      if(this.props.error.error != null){
-        console.log(this.props.error.error);
+
+    componentDidUpdate(prevProps) {
+        const { error, message } = this.props;
+        var notificationOption = {};
+        console.log(prevProps);
+        if (error !== prevProps.error) {
+            notificationOption = {
+                type: "error",
+                props: this.props.error
+            }
+            this.refs.notify.notificationAlert(withOptions(notificationOption));
+        }else if (message !== prevProps.message) {
+            notificationOption = {
+                type: "message",
+                props: this.props.message
+            }
+            this.refs.notify.notificationAlert(withOptions(notificationOption));
+        }
       }
-    return (
-      <div>
-            <NotificationAlert ref="notify" />
-            <button onClick={() => this.myFunc()}>Hey</button>
-      </div>
-    );
-  }
+
+    render() {
+        return (
+        <div>
+                <NotificationAlert ref="notify" />
+        </div>
+        );
+    }
 }
 
 const mapStateToProps = state => {

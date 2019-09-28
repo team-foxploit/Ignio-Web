@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 // core components
 import AuthNavbar from "components/Navbars/AuthNavbar.jsx";
 import AuthFooter from "components/Footers/AuthFooter.jsx";
+import AlertComponent from "components/Alert/AlertComponent.js";
 
 import routes from "routes.js";
 
@@ -77,6 +78,7 @@ class Auth extends React.Component {
               <Row className="justify-content-center">
                 <Switch>{this.getRoutes(routes)}</Switch>
               </Row>
+              <AlertComponent />
             </Container>
           </div>
           <AuthFooter />
