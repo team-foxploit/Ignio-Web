@@ -15,13 +15,15 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Card,
-  Button
+  Card
 } from "reactstrap";
 
 // core components
 import SettingsHeader from "components/Headers/SettingsHeader.jsx";
 import classnames from "classnames";
+
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 class Settings extends React.Component {
   constructor(props) {
@@ -44,9 +46,6 @@ class Settings extends React.Component {
   }
 
   isButtonClicked() {
-    // this.setState({
-    //   disabled: false
-    // });
     this.setState({ disabled: !this.state.disabled });
   }
 
@@ -61,8 +60,20 @@ class Settings extends React.Component {
               <Card className="bg-secondary shadow">
                 <CardHeader className="bg-white border-0">
                   <Row className="align-items-center">
-                    <Col xs="8">
+                    <Col md="8">
                       <h3 className="mb-0">Manage Account</h3>
+                    </Col>
+                    <Col md="4">
+                      <small className="text-success">
+                        Last Modified:{" "}
+                        <span className="text-info">
+                          {this.props.user.lastModifiedDate ? 
+                              new Date(this.props.user.lastModifiedDate).toLocaleString()
+                            :
+                              null
+                          }
+                        </span>
+                      </small >
                     </Col>
                   </Row>
                 </CardHeader>
@@ -128,7 +139,11 @@ class Settings extends React.Component {
                                         </label>
                                         <Input
                                           className="form-control-alternative"
-                                          defaultValue="parker.pete"
+                                          defaultValue={this.props.user.login ? 
+                                                            this.props.user.login
+                                                          :
+                                                            null
+                                                        }
                                           id="input-username"
                                           placeholder="Username"
                                           type="text"
@@ -146,7 +161,11 @@ class Settings extends React.Component {
                                         <Input
                                           className="form-control-alternative"
                                           id="input-email"
-                                          defaultValue="iamspider@marvel.com"
+                                          defaultValue={this.props.user.email ? 
+                                                            this.props.user.email
+                                                          :
+                                                            null
+                                                        }
                                           placeholder="Email Address"
                                           type="email"
                                         />
@@ -164,7 +183,11 @@ class Settings extends React.Component {
                                         </label>
                                         <Input
                                           className="form-control-alternative"
-                                          defaultValue="Peter"
+                                          defaultValue={this.props.user.firstName ? 
+                                                            this.props.user.firstName
+                                                          :
+                                                            null
+                                                        }
                                           id="input-first-name"
                                           placeholder="First name"
                                           type="text"
@@ -181,7 +204,11 @@ class Settings extends React.Component {
                                         </label>
                                         <Input
                                           className="form-control-alternative"
-                                          defaultValue="Parker"
+                                          defaultValue={this.props.user.lastName ? 
+                                                            this.props.user.lastName
+                                                          :
+                                                            null
+                                                        }
                                           id="input-last-name"
                                           placeholder="Last name"
                                           type="text"
@@ -190,18 +217,6 @@ class Settings extends React.Component {
                                     </Col>
                                   </Row>
                                   <hr className="my-4" />
-                                  <Row>
-                                    <Col className="text-right" xs="12">
-                                      <Button
-                                        color="primary"
-                                        href="#pablo"
-                                        onClick={e => e.preventDefault()}
-                                        size="sm"
-                                      >
-                                        Update
-                                      </Button>
-                                    </Col>
-                                  </Row>
                                 </div>
                               </Col>
                             </Row>
@@ -228,7 +243,11 @@ class Settings extends React.Component {
                                         <Input
                                           type="text"
                                           className="form-control-alternative"
-                                          defaultValue="4532187519556819"
+                                          defaultValue={this.props.user.billingInfo ? 
+                                                            this.props.user.billingInfo.creditCardNumber
+                                                          :
+                                                            null
+                                                        }
                                           id="input-credit-card-number"
                                           placeholder="Your Credit Card Number"
                                         />
@@ -242,7 +261,11 @@ class Settings extends React.Component {
                                         <Input
                                           type="text"
                                           className="form-control-alternative"
-                                          defaultValue="Visa"
+                                          defaultValue={this.props.user.billingInfo ? 
+                                                            this.props.user.billingInfo.creditCardType
+                                                          :
+                                                            null
+                                                        }
                                           id="input-credit-card-type"
                                           placeholder="Credit Card Type"
                                         />
@@ -256,7 +279,11 @@ class Settings extends React.Component {
                                         <Input
                                           type="text"
                                           className="form-control-alternative"
-                                          defaultValue="092"
+                                          defaultValue={this.props.user.billingInfo ? 
+                                                            this.props.user.billingInfo.cvv2
+                                                          :
+                                                            null
+                                                        }
                                           id="input-credit-card-cvv"
                                           placeholder="CVV"
                                         />
@@ -270,7 +297,11 @@ class Settings extends React.Component {
                                         <Input
                                           type="text"
                                           className="form-control-alternative"
-                                          defaultValue="02/21"
+                                          defaultValue={this.props.user.billingInfo ? 
+                                                            this.props.user.billingInfo.expiresOn
+                                                          :
+                                                            null
+                                                        }
                                           id="input-credit-card-expire-date"
                                           placeholder="MM/YY"
                                         />
@@ -286,7 +317,11 @@ class Settings extends React.Component {
                                         </label>
                                         <Input
                                           className="form-control-alternative"
-                                          defaultValue='"Valley of Death", Serpentine Road, Colombo 08'
+                                          defaultValue={this.props.user.billingInfo ? 
+                                                            this.props.user.billingInfo.billingAddress
+                                                          :
+                                                            null
+                                                        }
                                           id="input-address"
                                           placeholder="Home Address"
                                           type="text"
@@ -305,7 +340,11 @@ class Settings extends React.Component {
                                         </label>
                                         <Input
                                           className="form-control-alternative"
-                                          defaultValue="Colombo"
+                                          defaultValue={this.props.user.billingInfo ? 
+                                                            this.props.user.billingInfo.city
+                                                          :
+                                                            null
+                                                        }
                                           id="input-city"
                                           placeholder="City"
                                           type="text"
@@ -322,7 +361,11 @@ class Settings extends React.Component {
                                         </label>
                                         <Input
                                           className="form-control-alternative"
-                                          defaultValue="Sri Lanka"
+                                          defaultValue={this.props.user.billingInfo ? 
+                                                            this.props.user.billingInfo.country
+                                                          :
+                                                            null
+                                                        }
                                           id="input-country"
                                           placeholder="Country"
                                           type="text"
@@ -340,7 +383,11 @@ class Settings extends React.Component {
                                         <Input
                                           className="form-control-alternative"
                                           id="input-postal-code"
-                                          defaultValue="11200"
+                                          defaultValue={this.props.user.billingInfo ? 
+                                                            this.props.user.billingInfo.postalCode
+                                                          :
+                                                            null
+                                                        }
                                           placeholder="Postal code"
                                           type="number"
                                         />
@@ -349,96 +396,6 @@ class Settings extends React.Component {
                                   </Row>
                                 </div>
                                 <hr className="my-4" />
-                                <div className="pl-lg-4">
-                                  <h6 className="heading-small text-muted mb-4">
-                                    Contact information
-                                  </h6>
-                                  <Row>
-                                    <Col md="12">
-                                      <FormGroup>
-                                        <label
-                                          className="form-control-label"
-                                          htmlFor="input-address"
-                                        >
-                                          Billing Address
-                                        </label>
-                                        <Input
-                                          className="form-control-alternative"
-                                          defaultValue='"Valley of Death", Serpentine Road, Colombo 08'
-                                          id="input-address"
-                                          placeholder="Home Address"
-                                          type="text"
-                                        />
-                                      </FormGroup>
-                                    </Col>
-                                  </Row>
-                                  <Row>
-                                    <Col lg="4">
-                                      <FormGroup>
-                                        <label
-                                          className="form-control-label"
-                                          htmlFor="input-city"
-                                        >
-                                          City
-                                        </label>
-                                        <Input
-                                          className="form-control-alternative"
-                                          defaultValue="Colombo"
-                                          id="input-city"
-                                          placeholder="City"
-                                          type="text"
-                                        />
-                                      </FormGroup>
-                                    </Col>
-                                    <Col lg="4">
-                                      <FormGroup>
-                                        <label
-                                          className="form-control-label"
-                                          htmlFor="input-country"
-                                        >
-                                          Country
-                                        </label>
-                                        <Input
-                                          className="form-control-alternative"
-                                          defaultValue="Sri Lanka"
-                                          id="input-country"
-                                          placeholder="Country"
-                                          type="text"
-                                        />
-                                      </FormGroup>
-                                    </Col>
-                                    <Col lg="4">
-                                      <FormGroup>
-                                        <label
-                                          className="form-control-label"
-                                          htmlFor="input-country"
-                                        >
-                                          Postal code
-                                        </label>
-                                        <Input
-                                          className="form-control-alternative"
-                                          id="input-postal-code"
-                                          defaultValue="11200"
-                                          placeholder="Postal code"
-                                          type="number"
-                                        />
-                                      </FormGroup>
-                                    </Col>
-                                  </Row>
-                                  <hr className="my-4" />
-                                  <Row>
-                                    <Col className="text-right" xs="12">
-                                      <Button
-                                        color="primary"
-                                        href="#pablo"
-                                        onClick={e => e.preventDefault()}
-                                        size="sm"
-                                      >
-                                        Update
-                                      </Button>
-                                    </Col>
-                                  </Row>
-                                </div>
                               </Col>
                             </Row>
                           </Container>
@@ -452,22 +409,23 @@ class Settings extends React.Component {
                                   Fire Service information [Emergency authority]
                                 </h6>
                                 <Row>
-                                  <label
-                                    className="form-control-label"
-                                    htmlFor="input-address"
-                                  >
-                                    Here contains critical info. Are you sure?
-                                  </label>
-                                  <Col className="text-left" xs="12">
-                                    <Button
-                                      color="warning"
-                                      href="#pablo"
-                                      onClick={this.isButtonClicked.bind(this)}
-                                      // onClick={() => { this.isButtonClicked(); }}
-                                      size="sm"
+                                  <Col className="text-left" md="12">
+                                    <label
+                                      className="form-control-label"
+                                      htmlFor="input-address"
                                     >
-                                      Yes, I understand
-                                    </Button>
+                                      Here contains, critical information. Are you sure you want to make changes?
+                                    </label>
+                                  </Col>
+                                  <Col className="text-left" md="1">
+                                    <label className="custom-toggle">
+                                      <input defaultChecked={false} type="checkbox" onClick={this.isButtonClicked.bind(this)} />
+                                      <span className="custom-toggle-slider rounded-circle" />
+                                    </label>
+                                    <span className="clearfix" />
+                                  </Col>
+                                  <Col className="text-left ml-2" md="10">
+                                    <div className="text-warning">{" "}Yes, I understand</div>
                                   </Col>
                                 </Row>
                                 <hr></hr>
@@ -608,24 +566,23 @@ class Settings extends React.Component {
                                     </Col>
                                   </Row>
                                   <hr className="my-4" />
-                                  <Row>
-                                    <Col className="text-right" xs="12">
-                                      <Button
-                                        color="primary"
-                                        href="#pablo"
-                                        onClick={e => e.preventDefault()}
-                                        size="sm"
-                                      >
-                                        Update
-                                      </Button>
-                                    </Col>
-                                  </Row>
                                 </div>
                               </Col>
                             </Row>
                           </Container>
                         </TabPane>
                       </TabContent>
+                      <Row>
+                        <Col className="text-right" xs="12">
+                          <button
+                            className="btn btn-primary"
+                            onClick={e => e.preventDefault()}
+                            type="submit"
+                          >
+                            Update
+                          </button>
+                        </Col>
+                      </Row>
                     </div>
                   </Form>
                 </CardBody>
@@ -638,4 +595,10 @@ class Settings extends React.Component {
   }
 }
 
-export default Settings;
+const mapStateToProps = (state) => {
+  return{
+    user: state.auth.user
+  }
+}
+
+export default withRouter(connect(mapStateToProps, { })(Settings));

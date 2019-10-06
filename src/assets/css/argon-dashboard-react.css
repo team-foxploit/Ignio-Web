@@ -3033,6 +3033,7 @@ input[type="button"].btn-block {
     border-top-left-radius: 0.375rem;
     border-top-right-radius: 0.375rem; }
     .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+      cursor: pointer;
       border-color: #e9ecef #e9ecef #dee2e6; }
     .nav-tabs .nav-link.disabled {
       color: #8898aa;
