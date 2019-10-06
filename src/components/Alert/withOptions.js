@@ -32,6 +32,13 @@ export const withOptions = (notificationOptions) => {
                 message: " Invalid Password!",
                 icon: "fa fa-times-circle"
             }
+        }else if (error === "No device"){
+            options = {
+                ...options,
+                type: "warning",
+                message: " No Device found for given ID!",
+                icon: "fa fa-times-circle"
+            }
         }else if(error.title){
             options = {
                 ...options,
