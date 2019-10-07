@@ -1,12 +1,8 @@
 import React from 'react';
 
 const DeviceDetailRow = (props) => {
-    console.log(props);
+    // console.log(props);
     const { deviceId, ownerId, created, purchased } = props.deviceData;
-    console.log(deviceId);
-    console.log(created);
-    console.log(purchased);
-    console.log(ownerId);
     return (
         <tr>
             <th scope="row">

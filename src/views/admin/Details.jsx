@@ -73,45 +73,33 @@ class Details extends React.Component {
     setTimeout(() => wow(), 1000);
     // this.chartReference.update();
   };
+
   componentWillMount() {
     if (window.Chart) {
       parseOptions(Chart, chartOptions());
     }
-    // console.log("Load data from the server!");
-    // console.log(this.props);
-    
-    this.props.fetchDataById("NODEIGNIOF101");
-  }
-  componentDidUpdate(){
-    if (!this.props.data.showChart && this.props.data.deviceIds[0]) {
-      // console.log(this.props.data.deviceIds[0]);
-      // console.log(chartExample1[this.state.chartExample1Data]);
-
-      this.props.setActiveDevice(this.props.data.deviceIds[0]);
-      this.props.setActiveDeviceData(createDataSet(this.props.data.deviceData, this.props.data.deviceIds[0]));
-      console.log(this.props);
-      // this.setState({
-      //   dataSet: createDataSet(this.props.data.deviceData, this.props.data.deviceIds[0])
-      // }, () => {
-      //   console.log(this.state);
-      // });
+    if(this.props.data.deviceIds.length !== 0){
+      this.props.fetchDataById(this.props.data.deviceIds[0]);
     }
   }
-  // componentWillReceiveProps(nextProps) {
-  //   if (!nextProps.data.showChart && nextProps.data.deviceIds[0]) {
-  //     // console.log(nextProps.data.deviceIds[0]);
-  //     // console.log(chartExample1[this.state.chartExample1Data]);
 
-  //     this.props.setActiveDevice(nextProps.data.deviceIds[0]);
-  //     this.props.setActiveDeviceData(createDataSet(nextProps.data.deviceData, nextProps.data.deviceIds[0]));
-  //     console.log(this.props);
-  //     // this.setState({
-  //     //   dataSet: createDataSet(nextProps.data.deviceData, nextProps.data.deviceIds[0])
-  //     // }, () => {
-  //     //   console.log(this.state);
-  //     // });
-  //   }
-  // }
+  componentDidUpdate(){
+    if (!this.props.data.showChart && this.props.data.deviceIds[0]) {
+      this.props.setActiveDevice(this.props.data.deviceIds[0]);
+      this.props.setActiveDeviceData(createDataSet(this.props.data.deviceData, this.props.data.deviceIds[0]));
+    }
+  }
+
+  handleSync(e){
+    // e.preventDefault();
+    if(this.props.data.activeDevice === ""){
+      console.log("FIRST TIME");
+      this.props.fetchDataById(this.props.data.deviceIds[0]);
+    }else{
+      console.log("NOT FIRST TIME");
+      this.props.fetchDataById(this.props.data.activeDevice);
+    }
+  }
 
   render() {
     return (
@@ -128,7 +116,7 @@ class Details extends React.Component {
                     className="float-right"
                     color="default"
                     href="#pablo"
-                    onClick={e => e.preventDefault()}
+                    onClick={this.handleSync.bind(this)}
                     size="sm"
                   >
                     Sync now

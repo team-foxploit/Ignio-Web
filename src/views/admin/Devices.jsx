@@ -8,16 +8,10 @@ import {
   Row,
   Col,
   UncontrolledTooltip,
-  Badge,
   CardFooter,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  DropdownToggle,
   Pagination,
   PaginationItem,
   PaginationLink,
-  Progress,
   Table
 } from "reactstrap";
 // core components
@@ -78,9 +72,12 @@ class Devices extends React.Component {
                   </thead>
                   <tbody>
                     {
-                      this.props.data.deviceData.map((deviceData, index) => 
-                        <DeviceTableRow deviceData={deviceData} key={index}/>
-                      )
+                      this.props.data.deviceData ? 
+                        this.props.data.deviceData.map((deviceData, index) => 
+                          <DeviceTableRow deviceData={deviceData} key={index}/>
+                        )
+                      :
+                      null
                     }
                   </tbody>
                 </Table>
@@ -152,7 +149,12 @@ class Devices extends React.Component {
                       this.props.billingInfo.ignios.map((deviceId, index) => 
                         <Col lg="3" md="6" key={index}>
                           <button
-                            className="btn-icon-clipboard"
+                            className={this.state.selectedDevice === deviceId ?
+                              "btn-icon-clipboard btn btn-secondary"
+                              :
+                              "btn-icon-clipboard"
+
+                            }
                             id={deviceId}
                             type="button"
                             onClick={() => this.handleDeviceSelection(deviceId)}
@@ -181,22 +183,22 @@ class Devices extends React.Component {
                   </Row>
                 </CardBody>
                 {this.props.data.activeDeviceDetails ?
-                      <Table className="align-items-center table-flush" responsive>
+                      <Table className="align-items-center table-flush mt -3" responsive>
                         <thead className="thead-light">
                           <tr>
-                            <th scope="col">
+                            <th scope="col" className="text-left">
                               <i className="ni ni-archive-2"></i>
                               {" "} Device ID
                             </th>
-                            <th scope="col">
+                            <th scope="col" className="text-center">
                               <i className="ni ni-calendar-grid-58"></i>
                               {" "} Manufactured Date
                             </th>
-                            <th scope="col">
+                            <th scope="col" className="text-center">
                               <i className="ni ni-circle-08"></i>
                               {" "} Owner ID
                             </th>
-                            <th scope="col">
+                            <th scope="col" className="text-center">
                               <i className="ni ni-calendar-grid-58"></i>
                               {" "} Purchased Date
                             </th>
@@ -212,7 +214,9 @@ class Devices extends React.Component {
                         </tbody>
                       </Table>
                     :
-                      null
+                      <div className="container text-center">
+                        <p>Select a device to view details...</p> 
+                      </div>
                 }
               </Card>
             </div>

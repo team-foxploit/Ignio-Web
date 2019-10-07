@@ -1,14 +1,11 @@
 import React from 'react';
-
 import {
     Badge,
-    Progress,
     DropdownItem,
     DropdownToggle,
     DropdownMenu,
     UncontrolledDropdown
 } from "reactstrap";
-import { NavLink } from "react-router-dom";
 
 const DeviceTableRow = (props) => {
     console.log(props);

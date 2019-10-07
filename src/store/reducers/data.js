@@ -29,7 +29,7 @@ export default function (state=initialState, action) {
             return {
                 ...state,
                 isLoading: false,
-                deviceData: {},
+                deviceData: [],
             };
         case actionTypes.DEVICE_DETAIL_FETCH_START:
             return {

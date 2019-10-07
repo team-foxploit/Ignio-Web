@@ -39,6 +39,13 @@ export const withOptions = (notificationOptions) => {
                 message: " No Device found for given ID!",
                 icon: "fa fa-times-circle"
             }
+        }else if (error === "Network Error"){
+            options = {
+                ...options,
+                type: "warning",
+                message: " No Device found for given ID!",
+                icon: "fa fa-times-circle"
+            }
         }else if(error.title){
             options = {
                 ...options,

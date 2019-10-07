@@ -4,8 +4,8 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { Container } from "reactstrap";
 // REDUX
 import { connect } from "react-redux";
-import { login, getUser } from '../store/actions/authActions';
-import { fetchDataById } from '../store/actions/dataActions';
+import { getUser } from '../store/actions/authActions';
+import { uxProcedure } from '../store/actions/combinedActions';
 // core components
 import AdminNavbar from "components/Navbars/AdminNavbar.jsx";
 import AdminFooter from "components/Footers/AdminFooter.jsx";
@@ -14,17 +14,14 @@ import AlertComponent from "components/Alert/AlertComponent.js";
 
 import routes from "routes.js";
 
-class Admin extends React.Component {
+class Admin extends React.PureComponent {
 
   componentWillMount(){
     if(!this.props.isAuthenticated && this.props.ignioToken){
-      this.props.getUser();
+      // this.props.getUser();
+      this.props.uxProcedure();
     }
-  }
-
-  componentDidMount(){
-    // this.props.fetchDataById("NODEIGNIOF101");
-  }
+  }  
 
   // componentDidUpdate(e) {
   //   document.documentElement.scrollTop = 0;
@@ -47,6 +44,7 @@ class Admin extends React.Component {
       }
     });
   };
+
   getBrandText = path => {
     for (let i = 0; i < routes.length; i++) {
       if (
@@ -109,6 +107,7 @@ const mapStateToProps = (state) => {
   return (
     {
       user: state.auth.user,
+      data: state.data,
       ignioToken: state.auth.ignioToken,
       isAuthenticated: state.auth.isAuthenticated,
       isLoading: state.auth.isLoading
@@ -116,4 +115,4 @@ const mapStateToProps = (state) => {
   );
 }
 
-export default connect(mapStateToProps, { login, getUser, fetchDataById })(Admin);
+export default connect(mapStateToProps, { getUser, uxProcedure })(Admin);
