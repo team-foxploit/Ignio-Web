@@ -18,7 +18,7 @@ export const uxProcedure = () => (dispatch, getState) => {
         dispatch({
             type: actionTypes.SHOW_MESSAGE,
             payload: {
-                message: "Welcome to Ignio!"
+                message: "Welcome to Ignio"
             }
         });
         console.log(getState().auth.user);

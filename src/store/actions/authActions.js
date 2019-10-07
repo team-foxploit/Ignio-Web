@@ -98,7 +98,7 @@ export const getUser = () => (dispatch, getState) => {
       dispatch({
         type: actionTypes.SHOW_MESSAGE,
         payload: {
-          message: "Welcome to Ignio!"
+          message: "Welcome to Ignio"
         }
       });
     })
