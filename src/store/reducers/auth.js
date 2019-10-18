@@ -4,6 +4,7 @@ const initialState = {
     ignioToken: localStorage.getItem('ignioToken'),
     user: {},
     isAuthenticated: false,
+    isRegisterSuccess: false,
     isLoading: false
 }
 
@@ -29,23 +30,21 @@ export default function (state=initialState, action) {
                 isAuthenticated: true
             };
         case actionTypes.AUTH_SUCCESS:
-            localStorage.setItem('ignioToken', action.payload.token);
-            return {
-                ...state,
-                user: action.payload,
-                ignioToken: action.payload.token,
-                isAuthenticated: true,
-                isLoading: false
-            };
+            if(action.payload.id_token){
+                localStorage.setItem('ignioToken', action.payload.id_token);
+                return {
+                    ...state,
+                    ignioToken: action.payload.id_token,
+                    isLoading: false
+                };
+            }else{
+                return {
+                    ...state,
+                    isRegisterSuccess: true,
+                    isLoading: false
+                };
+            }
         case actionTypes.USER_LOGOUT:
-            localStorage.removeItem('ignioToken');
-            return {
-                ...state,
-                isLoading: false,
-                isAuthenticated: false,
-                user: null,
-                ignioToken: null
-            };
         case actionTypes.AUTH_FAIL:
             localStorage.removeItem('ignioToken');
             return {

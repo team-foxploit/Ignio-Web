@@ -8,25 +8,39 @@ import {
   Row,
   Col,
   UncontrolledTooltip,
-  Badge,
   CardFooter,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  DropdownToggle,
   Pagination,
   PaginationItem,
   PaginationLink,
-  Progress,
   Table
-
 } from "reactstrap";
 // core components
 import Header from "components/Headers/Header.jsx";
+import DeviceTableRow from "components/DeviceTableRow/DeviceTableRow.js";
+import DeviceDetailRow from "../../components/DeviceDetailRow/DeviceDetailRow";
 
-class Icons extends React.Component {
-  state = {};
+// REDUX
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { fetchDeviceDetailById } from "../../store/actions/dataActions";
+
+class Devices extends React.Component {
+  state = {
+    selectedDevice: this.props.data.activeDevice
+  };
+
+  handleDeviceSelection = (deviceId) => {
+    console.log(deviceId);
+    this.setState({
+      selectedDevice: deviceId
+    }, () => {
+      this.props.fetchDeviceDetailById(this.state.selectedDevice);
+    });
+  }
+
   render() {
+    console.log(this.props);
+    console.log(this.state);
     return (
       <>
         <Header />
@@ -41,247 +55,30 @@ class Icons extends React.Component {
                 <Table className="align-items-center table-flush" responsive>
                   <thead className="thead-light">
                     <tr>
-                      <th scope="col">DeviceID</th>
-                      {/* <th scope="col">Budget</th> */}
-                      <th scope="col">Status</th>
-                      {/* <th scope="col">Users</th> */}
-                      <th scope="col">Sensor accuracy</th>
+                      <th scope="col">
+                      <i className="ni ni-archive-2"></i>
+                        {" "} Device ID
+                      </th>
+                      <th scope="col">
+                      <i className="ni ni-sound-wave"></i>
+                        {" "} Status
+                      </th>
+                      <th scope="col">
+                        <i className="ni ni-atom"></i>
+                        {" "} Last Activity
+                      </th>
                       <th scope="col" />
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">
-                        <i className="ni ni-box-2 mr-3"></i>
-                        INDB1S1
-                      </th>
-                      <td>
-                        <Badge color="" className="badge-dot mr-4">
-                          <i className="bg-danger" />
-                          Not-active
-                        </Badge>
-                      </td>
-                      <td>
-                        <div className="d-flex align-items-center">
-                          <span className="mr-2">60%</span>
-                          <div>
-                            <Progress
-                              max="100"
-                              value="60"
-                              barClassName="bg-danger"
-                            />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="text-right">
-                        <UncontrolledDropdown>
-                          <DropdownToggle
-                            className="btn-icon-only text-light"
-                            href="#pablo"
-                            role="button"
-                            size="sm"
-                            color=""
-                            onClick={e => e.preventDefault()}
-                          >
-                            <i className="fas fa-ellipsis-v" />
-                          </DropdownToggle>
-                          <DropdownMenu className="dropdown-menu-arrow" right>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
-                              Action
-                            </DropdownItem>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
-                              Another action
-                            </DropdownItem>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
-                              Something else here
-                            </DropdownItem>
-                          </DropdownMenu>
-                        </UncontrolledDropdown>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <i className="ni ni-box-2 mr-3"></i>
-                        INDB1S2
-                      </th>
-                      <td>
-                        <Badge color="" className="badge-dot mr-4">
-                          <i className="bg-info" />
-                          Active
-                        </Badge>
-                      </td>
-                      <td>
-                        <div className="d-flex align-items-center">
-                          <span className="mr-2">100%</span>
-                          <div>
-                            <Progress
-                              max="100"
-                              value="100"
-                              barClassName="bg-primary"
-                            />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="text-right">
-                        <UncontrolledDropdown>
-                          <DropdownToggle
-                            className="btn-icon-only text-light"
-                            href="#pablo"
-                            role="button"
-                            size="sm"
-                            color=""
-                            onClick={e => e.preventDefault()}
-                          >
-                            <i className="fas fa-ellipsis-v" />
-                          </DropdownToggle>
-                          <DropdownMenu className="dropdown-menu-arrow" right>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
-                              Action
-                            </DropdownItem>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
-                              Another action
-                            </DropdownItem>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
-                              Something else here
-                            </DropdownItem>
-                          </DropdownMenu>
-                        </UncontrolledDropdown>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <i className="ni ni-box-2 mr-3"></i>
-                        INDB1S3
-                      </th>
-                      <td>
-                        <Badge color="" className="badge-dot mr-4">
-                          <i className="bg-info" />
-                          Active
-                        </Badge>
-                      </td>
-                      <td>
-                        <div className="d-flex align-items-center">
-                          <span className="mr-2">98%</span>
-                          <div>
-                            <Progress
-                              max="100"
-                              value="98"
-                              barClassName="bg-primary"
-                            />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="text-right">
-                        <UncontrolledDropdown>
-                          <DropdownToggle
-                            className="btn-icon-only text-light"
-                            href="#pablo"
-                            role="button"
-                            size="sm"
-                            color=""
-                            onClick={e => e.preventDefault()}
-                          >
-                            <i className="fas fa-ellipsis-v" />
-                          </DropdownToggle>
-                          <DropdownMenu className="dropdown-menu-arrow" right>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
-                              Action
-                            </DropdownItem>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
-                              Another action
-                            </DropdownItem>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
-                              Something else here
-                            </DropdownItem>
-                          </DropdownMenu>
-                        </UncontrolledDropdown>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <i className="ni ni-box-2 mr-3"></i>
-                        INDB1S4
-                      </th>
-                      <td>
-                        <Badge color="" className="badge-dot mr-4">
-                          <i className="bg-info" />
-                          Active
-                        </Badge>
-                      </td>
-                      <td>
-                        <div className="d-flex align-items-center">
-                          <span className="mr-2">100%</span>
-                          <div>
-                            <Progress
-                              max="100"
-                              value="100"
-                              barClassName="bg-primary"
-                            />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="text-right">
-                        <UncontrolledDropdown>
-                          <DropdownToggle
-                            className="btn-icon-only text-light"
-                            href="#pablo"
-                            role="button"
-                            size="sm"
-                            color=""
-                            onClick={e => e.preventDefault()}
-                          >
-                            <i className="fas fa-ellipsis-v" />
-                          </DropdownToggle>
-                          <DropdownMenu className="dropdown-menu-arrow" right>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
-                              Action
-                            </DropdownItem>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
-                              Another action
-                            </DropdownItem>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={e => e.preventDefault()}
-                            >
-                              Something else here
-                            </DropdownItem>
-                          </DropdownMenu>
-                        </UncontrolledDropdown>
-                      </td>
-                    </tr>
+                    {
+                      this.props.data.deviceData ? 
+                        this.props.data.deviceData.map((deviceData, index) => 
+                          <DeviceTableRow deviceData={deviceData} key={index}/>
+                        )
+                      :
+                      null
+                    }
                   </tbody>
                 </Table>
                 <CardFooter className="py-4">
@@ -348,120 +145,81 @@ class Icons extends React.Component {
                 </CardHeader>
                 <CardBody>
                   <Row className=" icon-examples">
-                    <Col lg="3" md="6">
-                      <button
-                        className=" btn-icon-clipboard"
-                        id="tooltip982655500"
-                        type="button"
-                      >
-                        <div>
-                          <i className=" ni ni-box-2" />
-                          <span>INDB1S1</span>
-                        </div>
-                      </button>
-                      <UncontrolledTooltip
-                        delay={0}
-                        trigger="hover focus"
-                        target="tooltip982655500"
-                      >
-                        {this.state.copiedText === "active-40"
-                          ? "Copied"
-                          : "INDB1S1"}
-                      </UncontrolledTooltip>
-                    </Col>
-                    <Col lg="3" md="6">
-                      <button
-                        className=" btn-icon-clipboard"
-                        data-clipboard-text="air-baloon"
-                        id="tooltip47550434"
-                        type="button"
-                      >
-                        <div>
-                          <i className=" ni ni-box-2" />
-                          <span>INDB1S2</span>
-                        </div>
-                      </button>
-                      <UncontrolledTooltip
-                        delay={0}
-                        trigger="hover focus"
-                        target="tooltip47550434"
-                      >
-                        {this.state.copiedText === "air-baloon"
-                          ? "Copied"
-                          : "INDB1S2"}
-                      </UncontrolledTooltip>
-                    </Col>
-                    <Col lg="3" md="6">
-                      <button
-                        className=" btn-icon-clipboard"
-                        data-clipboard-text="album-2"
-                        id="tooltip945481346"
-                        type="button"
-                      >
-                        <div>
-                          <i className=" ni ni-box-2" />
-                          <span>INDB1S3</span>
-                        </div>
-                      </button>
-                      <UncontrolledTooltip
-                        delay={0}
-                        trigger="hover focus"
-                        target="tooltip945481346"
-                      >
-                        {this.state.copiedText === "album-2"
-                          ? "Copied"
-                          : "INDB1S3"}
-                      </UncontrolledTooltip>
-                    </Col>
-                    <Col lg="3" md="6">
-                      <button
-                        className=" btn-icon-clipboard"
-                        data-clipboard-text="align-center"
-                        id="tooltip662352101"
-                        type="button"
-                      >
-                        <div>
-                          <i className=" ni ni-box-2" />
-                          <span>INDB1S4</span>
-                        </div>
-                      </button>
-                      <UncontrolledTooltip
-                        delay={0}
-                        trigger="hover focus"
-                        target="tooltip662352101"
-                      >
-                        {this.state.copiedText === "align-center"
-                          ? "Copied"
-                          : "INDB1S4"}
-                      </UncontrolledTooltip>
-                    </Col>
+                    {this.props.billingInfo ? 
+                      this.props.billingInfo.ignios.map((deviceId, index) => 
+                        <Col lg="3" md="6" key={index}>
+                          <button
+                            className={this.state.selectedDevice === deviceId ?
+                              "btn-icon-clipboard btn btn-secondary"
+                              :
+                              "btn-icon-clipboard"
+
+                            }
+                            id={deviceId}
+                            type="button"
+                            onClick={() => this.handleDeviceSelection(deviceId)}
+                          >
+                            <div>
+                              <i className=" ni ni-box-2" />
+                              <span>{deviceId}</span>
+                            </div>
+                          </button>
+                          <UncontrolledTooltip
+                            delay={0}
+                            trigger="hover focus"
+                            target={deviceId}
+                          >
+                            {this.state.copiedText === "active-40"
+                              ? "Copied"
+                              : deviceId}
+                          </UncontrolledTooltip>
+                        </Col>
+                      )
+                      :
+                        <p className="text-warning">
+                          There's been some error with your device configurations!
+                        </p>
+                    }
                   </Row>
                 </CardBody>
+                {this.props.data.activeDeviceDetails ?
+                      <Table className="align-items-center table-flush mt -3" responsive>
+                        <thead className="thead-light">
+                          <tr>
+                            <th scope="col" className="text-left">
+                              <i className="ni ni-archive-2"></i>
+                              {" "} Device ID
+                            </th>
+                            <th scope="col" className="text-center">
+                              <i className="ni ni-calendar-grid-58"></i>
+                              {" "} Manufactured Date
+                            </th>
+                            <th scope="col" className="text-center">
+                              <i className="ni ni-circle-08"></i>
+                              {" "} Owner ID
+                            </th>
+                            <th scope="col" className="text-center">
+                              <i className="ni ni-calendar-grid-58"></i>
+                              {" "} Purchased Date
+                            </th>
+                            <th scope="col" />
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {this.props.data.activeDeviceDetails ?
+                                <DeviceDetailRow deviceData={this.props.data.activeDeviceDetails} />
+                              :
+                                null
+                          }
+                        </tbody>
+                      </Table>
+                    :
+                      <div className="container text-center">
+                        <p>Select a device to view details...</p> 
+                      </div>
+                }
               </Card>
             </div>
-            {/* <Col xl="4">
-              <Card className="shadow">
-                <CardHeader className="bg-transparent">
-                  <Row className="align-items-center">
-                    <div className="col">
-                      <h6 className="text-uppercase text-muted ls-1 mb-1">
-                        Performance
-                      </h6>
-                      <h2 className="mb-0">Device Activity</h2>
-                    </div>
-                  </Row>
-                </CardHeader>
-                <CardBody> */}
-            {/* Chart */}
-            {/* <div className="chart">
-                    <Bar
-                      data={chartExample2.data}
-                      options={chartExample2.options}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col> */}
           </Row>
         </Container>
       </>
@@ -469,4 +227,11 @@ class Icons extends React.Component {
   }
 }
 
-export default Icons;
+const mapStateToProps = (state) => {
+  return{
+    billingInfo: state.auth.user.billingInfo,
+    data: state.data
+  }
+}
+
+export default withRouter(connect(mapStateToProps, { fetchDeviceDetailById })(Devices));

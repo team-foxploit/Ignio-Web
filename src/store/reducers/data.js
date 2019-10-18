@@ -5,6 +5,7 @@ const initialState = {
     ],
     deviceData: [],
     activeDevice: "",
+    activeDeviceDetails: null,
     activeDeviceData: {},
     showChart: false,
     isLoading: false
@@ -28,7 +29,24 @@ export default function (state=initialState, action) {
             return {
                 ...state,
                 isLoading: false,
-                deviceData: {},
+                deviceData: [],
+            };
+        case actionTypes.DEVICE_DETAIL_FETCH_START:
+            return {
+                ...state,
+                isLoading: true
+            };
+        case actionTypes.DEVICE_DETAIL_FETCH_SUCCESS:
+            return {
+                ...state,
+                activeDeviceDetails: action.payload,
+                isLoading: false
+            };
+        case actionTypes.DEVICE_DETAIL_FETCH_FAIL:
+            return {
+                ...state,
+                isLoading: false,
+                activeDeviceDetails: null,
             };
         case actionTypes.SET_ACTIVE_DEVICE:
                 return {

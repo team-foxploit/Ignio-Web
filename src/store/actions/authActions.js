@@ -9,9 +9,8 @@ export const login = user => dispatch => {
     type: actionTypes.AUTH_START
   });
   axios
-    .post("http://localhost:8084/api/users/signin", user)
+    .post("http://localhost:8080/api/authenticate", user)
     .then(res => {
-      console.log(res);
       dispatch({
         type: actionTypes.AUTH_SUCCESS,
         payload: res.data
@@ -34,35 +33,19 @@ export const login = user => dispatch => {
 };
 
 // LOGOUT USER
-export const logout = () => (dispatch, getState) => {
+export const logout = () => (dispatch) => {
   dispatch({
     type: actionTypes.AUTH_START
   });
-  axios
-    .post(
-      "http://localhost:8000/api/auth/logout/",
-      null,
-      headerConfig(getState)
-    )
-    .then(res => {
-      dispatch({
-        type: actionTypes.USER_LOGOUT
-      });
-    })
-    .catch(error => {
-      console.log(error);
-      const errors = {
-        msg: error.response.data,
-        status: error.response.status
-      };
-      dispatch({
-        type: actionTypes.AUTH_FAIL
-      });
-      dispatch({
-        type: actionTypes.SHOW_ERROR,
-        payload: errors
-      });
-    });
+  dispatch({
+    type: actionTypes.CLEAR_ERROR
+  });
+  dispatch({
+    type: actionTypes.CLEAR_MESSAGE
+  });
+  dispatch({
+    type: actionTypes.USER_LOGOUT
+  });
 };
 
 // REGISTER USER
@@ -71,11 +54,18 @@ export const register = user => dispatch => {
     type: actionTypes.AUTH_START
   });
   axios
-    .post("http://localhost:8084/api/users/signup", user)
+    .post("http://localhost:8080/api/register", user)
     .then(res => {
       dispatch({
         type: actionTypes.AUTH_SUCCESS,
         payload: res.data
+      });
+      const message = {
+        message: "Registration Successful! Wait for an email to get further instructions."
+      }
+      dispatch({
+        type: actionTypes.SHOW_MESSAGE,
+        payload: message
       });
     })
     .catch(error => {
@@ -93,17 +83,23 @@ export const register = user => dispatch => {
     });
 };
 
-// TODO: LOAD USER
-export const loadUser = () => (dispatch, getState) => {
+// GET USER
+export const getUser = () => (dispatch, getState) => {
   dispatch({
     type: actionTypes.USER_LOADING
   });
   axios
-    .get("http://localhost:8000/api/auth/user", headerConfig(getState))
+    .get("http://localhost:8080/api/account", headerConfig(getState))
     .then(res => {
       dispatch({
         type: actionTypes.USER_LOADED,
         payload: res.data
+      });
+      dispatch({
+        type: actionTypes.SHOW_MESSAGE,
+        payload: {
+          message: "Welcome to Ignio"
+        }
       });
     })
     .catch(error => {

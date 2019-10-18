@@ -2,14 +2,15 @@ import axios from "axios";
 
 import * as actionTypes from "./actionTypes";
 import { resolveDataUpdate } from "./helpers";
+import { headerConfig } from "./config";
 
-// LOAD Device Data By Id
-export const fetchDataById = deviceId => (dispatch, getState) => {
+// GET Device Data By Id
+export const fetchDataById = (deviceId) => (dispatch, getState) => {
   dispatch({
     type: actionTypes.DEVICE_DATA_FETCH_START
   });
   axios
-    .get("http://localhost:8082/api/device/data/all/" + deviceId)
+    .get("http://localhost:8080/services/devicedataservice/api/sensor-data/all/" + deviceId, headerConfig(getState))
     .then(res => {
       dispatch({
         type: actionTypes.DEVICE_DATA_FETCH_SUCCESS,
@@ -57,31 +58,42 @@ export const setActiveDeviceData = data => dispatch => {
 };
 
 
-// TODO: LOGOUT USER
-/*
-export const logout = () => (dispatch, getState) => {
+// GET Device Details By DeviceId
+export const fetchDeviceDetailById = (deviceId) => (dispatch, getState) => {
   dispatch({
-    type: actionTypes.AUTH_START
+    type: actionTypes.DEVICE_DETAIL_FETCH_START
   });
   axios
-    .post(
-      "http://localhost:8000/api/auth/logout/",
-      null,
-      headerConfig(getState)
-    )
+    .get("http://localhost:8080/services/devicedataservice/api/device/" + deviceId, headerConfig(getState))
     .then(res => {
       dispatch({
-        type: actionTypes.USER_LOGOUT
+        type: actionTypes.DEVICE_DETAIL_FETCH_SUCCESS,
+        payload: res.data
       });
     })
     .catch(error => {
       console.log(error);
-      const errors = {
-        msg: error.response.data,
-        status: error.response.status
-      };
+      var errors;
+      if(error.response){
+        if(error.response.data){
+          errors = {
+            msg: error.response.data,
+            status: error.response.status
+          }
+        }else{
+          errors = {
+            msg: "No device",
+            status: error.response.status
+          }
+        }
+      }else{
+        errors = {
+          msg: "Network Error",
+          status: 503
+        }
+      }
       dispatch({
-        type: actionTypes.AUTH_FAIL
+        type: actionTypes.DEVICE_DETAIL_FETCH_FAIL
       });
       dispatch({
         type: actionTypes.SHOW_ERROR,
@@ -89,4 +101,3 @@ export const logout = () => (dispatch, getState) => {
       });
     });
 };
-*/

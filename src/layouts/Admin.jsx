@@ -4,30 +4,30 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { Container } from "reactstrap";
 // REDUX
 import { connect } from "react-redux";
-import { login } from '../store/actions/authActions';
-import { fetchDataById } from '../store/actions/dataActions';
+import { getUser } from '../store/actions/authActions';
+import { uxProcedure } from '../store/actions/combinedActions';
 // core components
 import AdminNavbar from "components/Navbars/AdminNavbar.jsx";
 import AdminFooter from "components/Footers/AdminFooter.jsx";
 import Sidebar from "components/Sidebar/Sidebar.jsx";
+import AlertComponent from "components/Alert/AlertComponent.js";
 
 import routes from "routes.js";
 
-class Admin extends React.Component {
+class Admin extends React.PureComponent {
 
-  // componentWillMount(){
-  //   // console.log(this.props);
-  //   console.log("Load data from the server!");
-  //   // console.log(this.props);
+  componentWillMount(){
+    if(!this.props.isAuthenticated && this.props.ignioToken){
+      // this.props.getUser();
+      this.props.uxProcedure();
+    }
+  }  
 
-  //   // this.props.fetchDataById("NODEIGNIOF101");
+  // componentDidUpdate(e) {
+  //   document.documentElement.scrollTop = 0;
+  //   document.scrollingElement.scrollTop = 0;
+  //   this.refs.mainContent.scrollTop = 0;
   // }
-
-  componentDidUpdate(e) {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    this.refs.mainContent.scrollTop = 0;
-  }
 
   getRoutes = routes => {
     return routes.map((prop, key) => {
@@ -44,6 +44,7 @@ class Admin extends React.Component {
       }
     });
   };
+
   getBrandText = path => {
     for (let i = 0; i < routes.length; i++) {
       if (
@@ -57,15 +58,21 @@ class Admin extends React.Component {
     return "Brand";
   };
   render() {
-    // if(this.props.isLoading){
-    //   return (
-    //     <h1>Loading...</h1>
-    //   );
-    // }else if(!this.props.isLoading && !this.props.isAuthenticated){
-    //   return (
-    //     <Redirect from="/admin/index" to="/auth/login"/>
-    //   );
-    // }
+    if(this.props.isLoading){
+      return (
+        <div className="container">
+          <div className="row ml-2">
+            <div className="col mt-3">
+              <h1>Loading...</h1>
+            </div>
+          </div>
+        </div>
+      );
+    }else if(!this.props.ignioToken){
+      return (
+        <Redirect from="/admin/index" to="/auth/login"/>
+      );
+    }
     return (
       <>
         <Sidebar
@@ -86,6 +93,7 @@ class Admin extends React.Component {
             {this.getRoutes(routes)}
             <Redirect from="/" to="/admin/index" />
           </Switch>
+          <AlertComponent />
           <Container fluid className="bg-gradient-info">
             <AdminFooter />
           </Container>
@@ -99,6 +107,7 @@ const mapStateToProps = (state) => {
   return (
     {
       user: state.auth.user,
+      data: state.data,
       ignioToken: state.auth.ignioToken,
       isAuthenticated: state.auth.isAuthenticated,
       isLoading: state.auth.isLoading
@@ -106,4 +115,4 @@ const mapStateToProps = (state) => {
   );
 }
 
-export default connect(mapStateToProps, { login, fetchDataById })(Admin);
+export default connect(mapStateToProps, { getUser, uxProcedure })(Admin);

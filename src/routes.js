@@ -15,17 +15,17 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/devices",
-    name: "Your Devices",
-    icon: "ni ni-planet text-blue",
-    component: Devices,
-    layout: "/admin"
-  },
-  {
     path: "/history",
     name: "Detailed view",
     icon: "ni ni-bullet-list-67 text-red",
     component: Details,
+    layout: "/admin"
+  },
+  {
+    path: "/devices",
+    name: "Your Devices",
+    icon: "ni ni-planet text-blue",
+    component: Devices,
     layout: "/admin"
   },
   {

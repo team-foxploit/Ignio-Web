@@ -1,9 +1,6 @@
 import React from "react";
 import { Redirect, withRouter } from "react-router-dom";
 
-import { login } from "../../store/actions/authActions";
-import { connect } from "react-redux";
-
 // reactstrap components
 import {
   Button,
@@ -20,27 +17,39 @@ import {
   Col
 } from "reactstrap";
 
+// REDUX
+import { login, getUser } from "../../store/actions/authActions";
+import { connect } from "react-redux";
+
 class Login extends React.Component {
 
   state = {
     username: "",
     password: "",
+    rememberMe: false,
     error: null
   };
 
   handleChange = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value
-    });
+    const target = e.target;
+    if (target.type === 'checkbox') {
+      this.setState({
+        rememberMe: !this.state.rememberMe
+      });
+    } else {
+      this.setState({
+        [target.id]: target.value
+      });
+    }
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     const user = {
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      rememberMe: this.state.rememberMe
     }
-    console.log(this.state);
     this.props.login(user);
   }
 
@@ -49,10 +58,22 @@ class Login extends React.Component {
       return (
         <Redirect to="/admin/index" />
       )
+    }else if(!this.props.isAuthenticated && this.props.ignioToken){
+      this.props.getUser();
     }else if(this.props.isAuthenticated && this.props.ignioToken){
       return (
         <Redirect to="/admin/index" />
-      )
+      );
+    }else if(this.props.isLoading){
+      return (
+        <div className="container">
+          <div className="row ml-2">
+            <div className="col mt-3">
+              <h1>Loading...</h1>
+            </div>
+          </div>
+        </div>
+      );
     }
     return (
       <>
@@ -60,44 +81,8 @@ class Login extends React.Component {
           <Card className="bg-secondary shadow border-0">
             <CardHeader className="bg-transparent text-center">
               <h2>Login to review your safety!</h2>
-              {/* <div className="text-muted text-center mt-2 mb-3">
-                <small>Sign in with</small>
-              </div>
-              <div className="btn-wrapper text-center">
-                <Button
-                  className="btn-neutral btn-icon"
-                  color="default"
-                  href="#pablo"
-                  onClick={e => e.preventDefault()}
-                >
-                  <span className="btn-inner--icon">
-                    <img
-                      alt="..."
-                      src={require("assets/img/icons/common/github.svg")}
-                    />
-                  </span>
-                  <span className="btn-inner--text">Github</span>
-                </Button>
-                <Button
-                  className="btn-neutral btn-icon"
-                  color="default"
-                  href="#pablo"
-                  onClick={e => e.preventDefault()}
-                >
-                  <span className="btn-inner--icon">
-                    <img
-                      alt="..."
-                      src={require("assets/img/icons/common/google.svg")}
-                    />
-                  </span>
-                  <span className="btn-inner--text">Google</span>
-                </Button>
-              </div> */}
             </CardHeader>
             <CardBody className="px-lg-5 py-lg-5">
-              {/* <div className="text-center text-muted mb-4">
-                <small>Or sign in with credentials</small>
-              </div> */}
               <Form role="form" onSubmit={this.handleSubmit}>
                 <FormGroup className="mb-3">
                   <InputGroup className="input-group-alternative">
@@ -107,7 +92,7 @@ class Login extends React.Component {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input 
-                      placeholder="Email"
+                      placeholder="Username"
                       type="text"
                       id="username"
                       value={this.state.username}
@@ -134,12 +119,14 @@ class Login extends React.Component {
                 <div className="custom-control custom-control-alternative custom-checkbox">
                   <input
                     className="custom-control-input"
-                    id=" customCheckLogin"
+                    id=" rememberMe"
                     type="checkbox"
+                    value={this.state.rememberMe}
+                    onChange={this.handleChange.bind(this)}
                   />
                   <label
                     className="custom-control-label"
-                    htmlFor=" customCheckLogin"
+                    htmlFor=" rememberMe"
                   >
                     <span className="text-muted">Remember me</span>
                   </label>
@@ -182,8 +169,9 @@ const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
     isAuthenticated: state.auth.isAuthenticated,
-    ignioToken: state.auth.ignioToken
+    ignioToken: state.auth.ignioToken,
+    isLoading: state.auth.isLoading
   }
 }
 
-export default withRouter(connect(mapStateToProps, { login })(Login));
+export default withRouter(connect(mapStateToProps, { login, getUser })(Login));

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect, withRouter } from "react-router-dom";
 // reactstrap components
 import {
   DropdownMenu,
@@ -20,9 +20,24 @@ import {
 
 // REDUX
 import { connect } from "react-redux";
+import { logout } from "../../store/actions/authActions";
 
 class AdminNavbar extends React.Component {
+
+  state = {
+    redirect: false
+  }
+
+  handleLogOut = (e) => {
+    e.preventDefault();
+    this.props.logout();
+    this.setState({redirect: true});
+  }
+
   render() {
+    if (this.state.redirect) {
+      return <Redirect push to="/auth/login" />;
+    }
     return (
       <>
         <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
@@ -49,13 +64,6 @@ class AdminNavbar extends React.Component {
               <UncontrolledDropdown nav>
                 <DropdownToggle className="pr-0" nav>
                   <Media className="align-items-center">
-                    {/* <span className="avatar avatar-sm rounded-circle">
-                      // Include Image avatars here 
-                      <img
-                        alt="..."
-                        src={require("assets/img/theme/team-4-800x800.jpg")}
-                      />
-                    </span> */}
                     <i className=" ni ni-circle-08" />
                     <Media className="ml-2 d-none d-lg-block">
                       {this.props.username ?
@@ -72,7 +80,18 @@ class AdminNavbar extends React.Component {
                 </DropdownToggle>
                 <DropdownMenu className="dropdown-menu-arrow" right>
                   <DropdownItem className="noti-title" header tag="div">
-                    <h6 className="text-overflow m-0">Welcome!</h6>
+                    <h6 className="text-info m-0">
+                      Welcome{" "}
+                      {this.props.username ?
+                        <span className="mb-0 text-blue font-weight-700">
+                          {this.props.username}
+                        </span>
+                        :
+                        <span className="mb-0 text-blue font-weight-700">
+                          User
+                        </span>
+                      }{"!"}
+                    </h6>
                   </DropdownItem>
                   <DropdownItem to="/admin/user-profile" tag={Link}>
                     <i className="ni ni-single-02" />
@@ -87,7 +106,7 @@ class AdminNavbar extends React.Component {
                     <span>Activity</span>
                   </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
+                  <DropdownItem href="#pablo" onClick={this.handleLogOut}>
                     <i className="ni ni-user-run" />
                     <span>Logout</span>
                   </DropdownItem>
@@ -103,8 +122,8 @@ class AdminNavbar extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.auth.user.username
+    username: state.auth.user.login
   };
 }
 
-export default connect(mapStateToProps, null)(AdminNavbar);
+export default withRouter(connect(mapStateToProps, { logout })(AdminNavbar));
