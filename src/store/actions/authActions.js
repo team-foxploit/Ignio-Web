@@ -9,7 +9,7 @@ export const login = user => dispatch => {
     type: actionTypes.AUTH_START
   });
   axios
-    .post("http://localhost:8080/api/authenticate", user)
+    .post("http://ec2-3-83-87-227.compute-1.amazonaws.com:8080/api/authenticate", user)
     .then(res => {
       dispatch({
         type: actionTypes.AUTH_SUCCESS,
@@ -54,7 +54,7 @@ export const register = user => dispatch => {
     type: actionTypes.AUTH_START
   });
   axios
-    .post("http://localhost:8080/api/register", user)
+    .post("http://ec2-3-83-87-227.compute-1.amazonaws.com:8080/api/register", user)
     .then(res => {
       dispatch({
         type: actionTypes.AUTH_SUCCESS,
@@ -89,7 +89,7 @@ export const getUser = () => (dispatch, getState) => {
     type: actionTypes.USER_LOADING
   });
   axios
-    .get("http://localhost:8080/api/account", headerConfig(getState))
+    .get("http://ec2-3-83-87-227.compute-1.amazonaws.com:8080/api/account", headerConfig(getState))
     .then(res => {
       dispatch({
         type: actionTypes.USER_LOADED,
