@@ -9,7 +9,7 @@ export const uxProcedure = () => (dispatch, getState) => {
         type: actionTypes.USER_LOADING
     });
     axios
-    .get("http://localhost:8080/api/account", headerConfig(getState))
+    .get("http://ec2-3-83-87-227.compute-1.amazonaws.com:8080/api/account", headerConfig(getState))
     .then(res => {
         dispatch({
             type: actionTypes.USER_LOADED,

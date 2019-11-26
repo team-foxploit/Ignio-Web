@@ -219,7 +219,7 @@ class Details extends React.Component {
           </Row>
 
           <Row>
-            <Col className="mb-6 mb-xl-3" xl="12">
+            <Col className="mb-6 mb-xl-3 mt-4" xl="12">
               <Card className="bg-gradient-default shadow">
                 <CardHeader className="bg-transparent">
                   <Row className="align-items-center">
