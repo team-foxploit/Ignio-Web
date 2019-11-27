@@ -67,8 +67,8 @@ class Login extends React.Component {
     }else if(this.props.isLoading){
       return (
         <div className="container">
-          <div className="row ml-2">
-            <div className="col mt-3">
+          <div className="container text-center">
+            <div className="col mt-5">
               <h1>Loading...</h1>
             </div>
           </div>

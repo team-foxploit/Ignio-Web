@@ -10,7 +10,7 @@ export const fetchDataById = (deviceId) => (dispatch, getState) => {
     type: actionTypes.DEVICE_DATA_FETCH_START
   });
   axios
-    .get("http://ec2-3-83-87-227.compute-1.amazonaws.com:8080/services/devicedataservice/api/sensor-data/all/" + deviceId, headerConfig(getState))
+    .get("http://ec2-3-83-87-227.compute-1.amazonaws.com:8080/services/devicedataservice/api/sensor-data/all/" + deviceId + "?page=5&size=100&sort=%5B%22epoch(%2Cdesc)%22%5D", headerConfig(getState))
     .then(res => {
       dispatch({
         type: actionTypes.DEVICE_DATA_FETCH_SUCCESS,

@@ -61,8 +61,8 @@ class Admin extends React.PureComponent {
     if(this.props.isLoading){
       return (
         <div className="container">
-          <div className="row ml-2">
-            <div className="col mt-3">
+          <div className="row ml-2 mt-5">
+            <div className="col mt-5">
               <h1>Loading...</h1>
             </div>
           </div>
